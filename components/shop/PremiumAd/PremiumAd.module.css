@@ -1,0 +1,13 @@
+.premiumAd{
+    height: 50vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    overflow: hidden;
+    border-radius: 20px;
+}
+.premiumAd img{
+    width: 100%;
+}

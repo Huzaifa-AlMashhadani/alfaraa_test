@@ -1,31 +1,40 @@
 import { FaStar, FaRegStar } from "react-icons/fa";
-import "./Reviews.css"; // ملف CSS خارجي
-
+import styles from "./reviews.module.css"
 function Reviews({ reviews }) {
     return (
-        <div className="reviews-container">
-            {reviews.map((review) => (
-                <div key={review.id} className="review-card">
+        <div className={styles.reviews_container}>
+            {reviews.length > 0 ? reviews.map((review) => (
+                <div key={review.id} className={styles.review_card}>
+
+                    <div className={styles.user}>
+                        {/* المستخدم */}
+                        <div className={styles.review_user}>
+                            بواسطة المستخدم #{review.user_id} - {new Date(review.created_at).toLocaleDateString()}
+                        </div>
+
+                        {/* التعليق */}
+                        <p className={styles.review_comment}>{review.comment}</p>
+                    </div>
+
                     {/* النجوم */}
-                    <div className="stars">
-                        {Array.from({ length: 5 }, (_, i) =>
-                            i < review.stars ? (
-                                <FaStar key={i} className="star filled" />
-                            ) : (
-                                <FaRegStar key={i} className="star empty" />
-                            )
-                        )}
+                    <div className={styles.stars}>
+                        <div>
+                            {Array.from({ length: 5 }, (_, i) =>
+                                i < review.stars ? (
+                                    <FaStar key={i} className={`${styles.star} ${styles.filled}`} size={22}/>
+                                ) : (
+                                    <FaRegStar key={i} className={`${styles.star} ${styles.empty}`} size={22}/>
+                                )
+                            )}
+                        </div>
+                        <span>2025-6-13</span>
                     </div>
 
-                    {/* المستخدم */}
-                    <div className="review-user">
-                        بواسطة المستخدم #{review.user_id} - {new Date(review.created_at).toLocaleDateString()}
-                    </div>
 
-                    {/* التعليق */}
-                    <p className="review-comment">{review.comment}</p>
                 </div>
-            ))}
+            )):(
+                <span className={styles.emty}>لا توجد مراجعات حتى الان </span>
+            )}
         </div>
     );
 }

@@ -1,0 +1,92 @@
+"use client";
+
+
+import styles from "./register.module.css";
+import Navbar from "../../components/Navbar/Navabr";
+import Footer from "../../components/Footer/footer";
+import data from "@/app/data/home"
+import {useState} from "react";
+
+
+const Form = () => {
+    const [name, setName] = useState("");
+    const [phone, setPhone] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
+    const handleLogin = async () => {
+        try {
+            if(name === "" || email === "" || phone === "" || password === ""){
+                setError("كل الحقول مطلوبه ");
+                return;
+            }
+            const res = await fetch("http://127.0.0.1:8000/api/register", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({  name, phone, email, password }),
+            });
+
+
+
+            const data = await res.json();
+
+            if (!res.ok) {
+                setError(data.message);
+                return;
+            }
+            localStorage.setItem("token", data.token);
+            location.href="/";
+        } catch (err) {
+            setError("حدث خطا غيرمتوقع ")
+            console.error(err);
+        }
+    };
+
+
+    return (
+        <div className={styles.form}>
+            <h3> انشاء حساب </h3>
+            <span className={styles.errmsg}> {error} </span>
+            <div >
+                <label htmlFor="name" > الاسم </label>
+                <input type="text" id="name" placeholder=" اكتب اسمك هنا" value={name} onChange={(e) => setName(e.target.value)} />
+            </div>
+            <div >
+                <label htmlFor="email" >البريد الالكتروني</label>
+                <input type="email" id="email" placeholder="البريد الالكتروني" value={email} onChange={(e) => setEmail(e.target.value)} />
+            </div>
+            <div >
+                <label htmlFor="number" > رقم الهاتف</label>
+                <input type="number" id="number" placeholder=" اكتب رقم هاتفك هنا " value={phone} onChange={(e) => setPhone(e.target.value)} />
+            </div>
+            <div >
+                <label htmlFor="password">كلمة المرور</label>
+                <input type="password" id="password" placeholder="كلمة المرور" value={password}   onChange={(e) => setPassword(e.target.value)} // <<< هذا ناقص
+                />
+            </div>
+            <button onClick={handleLogin}>تسجيل الدخول</button>
+            <a href="">هل نسيت كلمة المرور؟</a>
+            <a href="/Login">  انشاء حساب جديد</a>
+
+        </div>
+    )
+}
+const Register = () => {
+
+    return (
+        <>
+            <Navbar data={data.navbar}/>
+            <div className="container">
+                <div className={styles.login}>
+                    <div className={styles.picture}>
+                        <img src="/login.png" alt="" />
+                    </div>
+                    <Form />
+                </div>
+            </div>
+            <Footer />
+        </>
+
+    )
+}
+export default Register;

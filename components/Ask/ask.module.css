@@ -1,0 +1,79 @@
+.ask{
+  display: flex;
+  justify-content:flex-start;
+  align-items: start;
+  flex-direction: row-reverse;
+  gap: 50px;
+min-height: 70vh;
+flex-wrap: wrap;
+}
+.ask .card{
+  background-color: #F1F5F9;
+  background-image: url("/banner-03.png.png");
+  background-repeat: no-repeat; /* تمنع التكرار */
+  background-size: cover;       /* تجعل الصورة تغطي العنصر بالكامل */
+  background-position: center;  /* تضع الصورة في المنتصف */
+  height: 500px;
+  padding: 30px;
+  border-radius: 8px;
+}
+
+.ask .card h1{
+  font-size: 36px;
+  font-weight: 800;
+  color: #212529
+}
+.ask .askes{
+  direction: rtl;
+}
+.ask .card .btn{
+  display: block;
+  padding:10px 25px;
+  width: 150px;
+  border-radius: 6px;
+  font-size: 13px;
+  background: var(--main-color);
+  margin: 10px;
+  font-weight: 700;
+}
+
+.ask .askes .answer{
+height: 0;
+overflow: hidden;
+transition: 0.3s;
+}
+.ask .askes h3{
+  cursor: pointer;
+  font-size: 20px;
+  position: relative;
+  padding: 10px;
+  font-weight: 500;
+  border-bottom: 1px solid #CBD5E1;
+}
+.ask .askes h3 span{
+  left: 0;
+  position: absolute;
+}
+.ask .askes h3:hover ~ .answer{
+  height: 300px;
+}
+.ask  .answer:hover{
+  height: 300px;
+}
+.ask .askAndAnswer{
+  width: 50%;
+
+}
+.ask .askAndAnswer h3{
+  width: 100%;
+}
+
+@media (max-width: 776px) {
+  .ask.card{
+      min-width: 300px;
+  max-width: 100%;
+  }
+  .ask .askAndAnswer{
+    width: 100%;
+  }
+}

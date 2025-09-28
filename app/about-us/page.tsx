@@ -1,5 +1,11 @@
 import styles from "./about.module.css";
 
-const aboutUsPage = () => (
-    <h1></h1>
-)
+const aboutUsPage = () => {
+    return (
+        <>
+
+        </>
+    );
+}
+
+export default aboutUsPage;
