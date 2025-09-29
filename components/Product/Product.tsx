@@ -4,7 +4,7 @@ import styles from "./product.module.css";
 import { LuMinus } from "react-icons/lu";
 import React, {useEffect, useState} from "react";
 import Slider from "@/app/ui/ProductsSlider/Slider/slider";
-import data from "@/app/data/home"
+
 import { IoIosCheckmarkCircleOutline } from "react-icons/io";
 import { IoWarningOutline } from "react-icons/io5";
 import { FaStar } from "react-icons/fa";
@@ -25,17 +25,31 @@ interface ProductCombilitiy {
     cars?: string[];
 }
 
-interface Review {
+interface reviews {
     id: number;
     user_id: number;
     stars: number;
     comment: string;
-    created_at: string | null;
+    created_at: string ;
 }
 
+interface product_units{
+    id: number;
+    product_id:number;
+    unit_id:number;
+    price:string | number;
+    stock: number;
+    products: string[] | null;
+}
+
+interface images{
+    id: number;
+    product_id:number;
+    image_url: string;
+}
 
 interface ProductData{
-    id: string;
+    id: number;
     ar_name: string;
     en_name: string;
     ar_description: string;
@@ -43,12 +57,16 @@ interface ProductData{
     price: string;
     old_price: string;
     thumbnail?: string;
+    categories_id?: number;
     image?: string;
-    reviews?: string[];
-    units?: string[];
-    alternative_parts?: string[];
-    images: string[];
-    store_id: string | number
+    reviews?: reviews[];
+    reviews_count?: number;
+    product_units: product_units[];
+    part_number: string[] ;
+    images: images[];
+    store_id: number | number;
+    message: string | null;
+
 }
 
 interface ProductProps {
@@ -69,7 +87,7 @@ const TextContent = ({ProdutData, ProductCombilitiy}: {ProdutData: ProductData, 
             setCurransy(saved as keyof typeof currency);
         }
 
-        const discount = ((Number(data.old_price ) - Number(data.price)) / Number(data.old_price)) * 100;
+        const discount = ((Number(ProdutData.old_price ) - Number(ProdutData.price)) / Number(ProdutData.old_price)) * 100;
         const discountInt = Math.floor(discount); // ينطيها بدون فواصل
 
         setDiscountInt(Number(discountInt));
@@ -82,14 +100,14 @@ const TextContent = ({ProdutData, ProductCombilitiy}: {ProdutData: ProductData, 
         }
     };
 
-    const calculateAverage = (reviews: Review[]) => {
+    const calculateAverage = (reviews: reviews[]) => {
         if(!reviews || reviews.length < 1) return 0
         const sum = reviews.reduce((acc, r) => acc + r.stars, 0);
         return reviews.length ? sum / reviews.length : 0;
     };
 
 
-        const averageRating = calculateAverage(ProdutData.reviews);
+        const averageRating = calculateAverage(ProdutData.reviews ?? []);
 
     const renderStars = (average: number) => {
         const stars = [];
@@ -115,7 +133,7 @@ const TextContent = ({ProdutData, ProductCombilitiy}: {ProdutData: ProductData, 
         return stars;
     };
 
-    const {addToCart, getCartData} = useCart();
+    const {addToCart} = useCart();
 
     const handleAddToCart = async () => {
         await addToCart(Number(ProdutData.id), atom);
@@ -187,9 +205,9 @@ const TextContent = ({ProdutData, ProductCombilitiy}: {ProdutData: ProductData, 
             )}
 
             <div className={styles.actions}>
-                {ProdutData.part_number.length > 0 && (
+                {ProdutData.part_number && ProdutData.part_number.length > 0 && (
                     <select>
-                        {ProdutData.part_number.map((unit, index) => (
+                        {ProdutData.part_number.map((unit:any, index) => (
                             <option key={unit.id ?? index} value={unit.unit_name}>
                                 {unit.unit_name}
                             </option>
@@ -242,14 +260,14 @@ const TextContent = ({ProdutData, ProductCombilitiy}: {ProdutData: ProductData, 
                 {/* المحتوى */}
                 <div className={styles.tabContent}>
                     {activeTab === "description" && <div className={styles.productDescription}>{
-                        ProdutData.alternative_parts?.map((part, index) => (
+                        ProdutData.part_number.map((part:any, index) => (
                             <div key={index} >
                                 <p>{`${part.company} | ${part.part_number}`}</p>
                             </div>
                         ))
                     } </div>}
-                    {activeTab === "additional" && <div className={styles.alternativeParts}><AlternativePartsTable alternativeParts={ProdutData.alternative_parts}/> </div>}
-                    {activeTab === "reviews" &&  <div className={styles.reviews}><Reviews reviews={ProdutData.reviews} /></div> }
+                    {activeTab === "additional" && <div className={styles.alternativeParts}><AlternativePartsTable alternativeParts={ProdutData.product_units}/> </div>}
+                    {activeTab === "reviews" &&  <div className={styles.reviews}><Reviews reviews={ProdutData.reviews ?? []} /></div> }
                 </div>
             </div>
         </div>

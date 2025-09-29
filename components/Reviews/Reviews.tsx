@@ -1,6 +1,14 @@
 import { FaStar, FaRegStar } from "react-icons/fa";
 import styles from "./reviews.module.css"
-function Reviews({ reviews }) {
+
+interface reviews {
+    id: number;
+    user_id: number;
+    stars: number;
+    comment: string;
+    created_at: string ;
+}
+function Reviews({ reviews }: {reviews: reviews[]}) {
     return (
         <div className={styles.reviews_container}>
             {reviews.length > 0 ? reviews.map((review) => (

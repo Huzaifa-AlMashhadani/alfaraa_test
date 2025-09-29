@@ -12,12 +12,12 @@ const Optaons = ({setDiscount, setReviews} : Props) =>{
     return(
                     <div className={styles.categoriesList}>
                 <label className={styles.checkbox} >
-                    <input type="checkbox" onChange={() => setDiscount((prev) => !prev)}/>
+                    <input type="checkbox" onChange={() => setDiscount((prev:any) => !prev)}/>
                        خصم على المنتج
                     <span className={styles.checkmark}></span>
                 </label>
                 <label className={styles.checkbox} >
-                    <input type="checkbox" onChange={() => setReviews((prev) => !prev)}/>
+                    <input type="checkbox" onChange={() => setReviews((prev:any) => !prev)}/>
                       تقييمات
                     <span className={styles.checkmark}></span>
                 </label>
@@ -101,8 +101,12 @@ const ProductCatregories = ({setDiscount, setReviews, setPriceRange} : Props) =>
     return (
         <div className={styles.productCatregories}>
             <h2>فلاتر البحث </h2>
-            <Optaons setDiscount={setDiscount} setReviews={setReviews} />
-            <FilterByPrice setPriceRange={setPriceRange}/>
+            <Optaons     setDiscount={setDiscount}
+                         setReviews={setReviews}
+                         setPriceRange={setPriceRange} />
+            <FilterByPrice     setDiscount={setDiscount}
+                               setReviews={setReviews}
+                               setPriceRange={setPriceRange} />
             <FilterByColor/>
         </div>
     )

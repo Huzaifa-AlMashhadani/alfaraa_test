@@ -19,9 +19,9 @@ const CartPage = () => {
     if(loading) return <Loading />;
 
     console.log(data);
-    const subtotal =  Array.isArray(data) && data.reduce( (acc, item) => acc + item.price * item.quantity, 0 );
+    const subtotal =  Array.isArray(data) && data.reduce( (acc, item) => acc + Number(item.price) * Number(item.quantity), 0 );
     const shipping = 12;
-    const total = subtotal + shipping;
+    const total = Number(subtotal) + shipping;
 
 
 
@@ -66,7 +66,7 @@ const CartPage = () => {
                             </tr>
                             </thead>
                             <tbody>
-                            {Array.isArray(data) && data.map((item) => (
+                            {Array.isArray(data) && data.map((item:any) => (
                                 <tr key={item.id}>
                                     <td>
                                         <div className={styles.product}>

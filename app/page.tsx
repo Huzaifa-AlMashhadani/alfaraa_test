@@ -18,7 +18,7 @@ import { getCart } from "./cart/cart";
 export default function Home() {
 
     const [searchData, setSearchData] = useState(null);
-    const [sliderdata, setSliderData] = useState<any[]>(null);
+    const [sliderdata, setSliderData] = useState<any[]>([]);
 
     useEffect(() => {
         console.log(process.env.NEXT_PUBLIC_SERVER_APP_BASE_URL);
@@ -71,7 +71,7 @@ export default function Home() {
             <Help/>
             <Silder data={sliderdata[2]}/>
             <Ask/>
-            <Articles data={data.articles}/>
+            <Articles />
             <Footer/>
         </>
     );

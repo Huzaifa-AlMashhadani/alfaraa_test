@@ -49,7 +49,7 @@ export const useGetCategorieById = (id:number) => {
                 const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_APP_BASE_URL}/getCategorieById/${id}`);
                 const json = await res.json();
                 setData(json[0]);
-            }catch (err:string) {
+            }catch (err:any) {
                 setError(err)
             }finally {
                 setLoading(false);

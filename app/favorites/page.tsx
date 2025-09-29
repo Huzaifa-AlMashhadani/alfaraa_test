@@ -13,6 +13,7 @@ type FavoriteItem = {
     en_name: string;
     name: string;
     thumbnail: string;
+    product_id: number | null;
 };
 
 export default function FavoritesPage() {
@@ -21,15 +22,15 @@ export default function FavoritesPage() {
 
     // جلب بيانات المفضلة
 
-    useEffect(() => {
-
-        const getFavortie = async () =>{
-            const favorites = await getFavorites();
-            setFavorites(favorites);
-        }
-        getFavortie();
-        setLoading(false);
-    }, []);
+    // useEffect(() => {
+    //
+    //     const getFavortie = async () =>{
+    //         const favorites = await getFavorites();
+    //         setFavorites(favorites);
+    //     }
+    //     getFavortie();
+    //     setLoading(false);
+    // }, []);
 
     // حذف عنصر من المفضلة
     const removeFavorite = async (product_id: number) => {
@@ -61,7 +62,7 @@ export default function FavoritesPage() {
     return (
 
         <div >
-            <Navabr data={data.navbar}/>
+            <Navabr/>
 
             <div className={styles.grid}>
                 {favorites.map((item) => (

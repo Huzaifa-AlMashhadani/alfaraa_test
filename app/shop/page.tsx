@@ -23,7 +23,7 @@ if (isLoading) return <Loading />;
   return (
       <>
     <Navbar/>
-      <PremiumAd data={data.diamond_ad}/>
+      <PremiumAd />
       <Brands />
       <Sections/>
           {data.map((item, index) => (
@@ -33,7 +33,7 @@ if (isLoading) return <Loading />;
               ))}
 
       <ContactUs/>
-      <Articles data={data.articles}/>
+      <Articles />
       <Footer/>
     </>
   );

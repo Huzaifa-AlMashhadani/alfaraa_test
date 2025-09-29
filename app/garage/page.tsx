@@ -2,7 +2,6 @@
 import styles from "./garage.module.css"
 import Footer from "../../components/Footer/footer"
 import Navbar from "../../components/Navbar/Navabr"
-import data from "../data/home"
 import {useEffect, useState} from "react";
 import {getGarage} from "@/app/utils/garage";
 import { FaCarRear } from "react-icons/fa6";
@@ -112,18 +111,17 @@ const Garage = () => {
 
     return (
         <div className={styles.garage}>
-            <Navbar data={data.navbar} />
+            <Navbar  />
             <div className="container">
                 <div className={styles.top}>
                     <button onClick={() => setShowAddCar(true)}>اضافة مركبة جديده</button>
                     <h2 className="title">المركبات المحفوظه</h2>
                 </div>
 
-                {showAddCar && (
+                {showAddCar && searchData &&(
                     <AddCar
                         data={searchData}
-                        onClose={() => setShowAddCar(false)}
-                        onAdd={(newCar: GarageCars) => setCars([newCar, ...cars])}
+
                     />
                 )}
 

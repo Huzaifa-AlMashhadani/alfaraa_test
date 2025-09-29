@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 export function useAd() {
     const [isLoading, setIsLoading] = useState(true); // يبدأ true
     const [error, setError] = useState("");
-    const [data, setData] = useState<any[]>([]); // array مباشرة
+    const [data, setData] = useState<any>(); // array مباشرة
 
     const getAd = async () => {
         try {

@@ -8,7 +8,7 @@ import Loading from "@/app/ui/loaders/Loading";
 
 
 
-const Card = ({item} : {item: any[]})=>{
+const Card = ({item} : {item: any})=>{
     return (
         <Link href={`/store/${item.id}`} className={styles.Card}>
             <img src={item.logo || "/no-image.jpeg"} alt="logo" />

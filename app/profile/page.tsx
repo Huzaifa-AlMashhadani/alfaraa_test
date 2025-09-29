@@ -74,7 +74,7 @@ const Profile = () => {
     if (loading) return <Loading />
     return (
         <>
-        <Navbar data={data.navbar} />
+        <Navbar />
         <div className={styles.profile}>
        <div className="container">
              <h1 className={styles.title}> My Profile </h1>

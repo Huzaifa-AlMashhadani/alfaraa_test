@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 export function useSearch() {
     const [isLoading, setIsLoading] = useState(true); // يبدأ true
     const [error, setError] = useState("");
-    const [data, setData] = useState<any[]>([]); // array مباشرة
+    const [data, setData] = useState<any>({}); // array مباشرة
 
     const getSearchData = async () => {
         try {

@@ -10,9 +10,9 @@ export type UserData = {
 }
 
 export const useUser = () => {
-    const [userData, setUserData] = useState<UserData>(null);
+    const [userData, setUserData] = useState<UserData>();
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<Error | null>(null);
+    const [error, setError] = useState<Error | null>();
 
 
 
@@ -29,7 +29,7 @@ export const useUser = () => {
                 });
                 const json = await res.json();
                 setUserData(json);
-            }catch (error) {
+            }catch (error:any) {
                 setError(error);
             }finally {
                 setLoading(false);

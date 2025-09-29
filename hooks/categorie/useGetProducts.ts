@@ -14,7 +14,7 @@ export type Product = {
 export const useGetProducts = (id: number) => {
     const [products, setProducts] = useState<Product[]>([]);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
+    const [error, setError] = useState<string | null>();
 
     useEffect(()=>{
         const fetchProducts = async () => {
@@ -22,7 +22,7 @@ export const useGetProducts = (id: number) => {
                 const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_APP_BASE_URL}/getPorducts/${id}`);
                 const json = await res.json();
                 setProducts(json);
-            }catch (error) {
+            }catch (error:any) {
                 setError(error);
             }finally {
                 setLoading(false);

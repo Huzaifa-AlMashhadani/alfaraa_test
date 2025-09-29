@@ -7,7 +7,7 @@ const Card = ({data} : {data: articlesData})=>{
             <div className={styles.card} >
                 <img src={data.image_url} alt="" />
                 <h3>{data.title}</h3>
-                <p>{data.subtitle}</p>
+                <p>{data.subTitle}</p>
                 <span>Lorem ipsum dolor sit amet.</span>
             </div>
         </a>
@@ -16,7 +16,7 @@ const Card = ({data} : {data: articlesData})=>{
 
 
 const Articles = ()=>{
-    const {data, error, loadin} = usegetThereArticles()
+    const {data} = usegetThereArticles()
     return (
         <div className="container">
             <div className={styles.Articles}>

@@ -10,19 +10,33 @@ import "swiper/css/pagination";
 import {addFavorite, getFavorites} from "@/app/utils/favorites";
 import {useEffect, useState} from "react";
 
-
-type LocalCardData = {
-  id: number
-  title: string
-  price: number
-  DisPrice: number
-  image: string
+interface Review {
+    id: number;
+    user_id: number;
+    stars: number;
+    comment: string;
+    created_at: string | null;
 }
-
+interface ProductData{
+    id: string;
+    ar_name: string;
+    en_name: string;
+    ar_description: string;
+    en_description: string;
+    price: string;
+    old_price: string;
+    thumbnail?: string;
+    image?: string;
+    reviews?: Review[];
+    units?: string[];
+    alternative_parts?: string[];
+    images: string[];
+    reviews_count: number
+}
 type LocalData = {
   title: string
   description: string
-  cardsData: LocalCardData[]
+  cardsData: ProductData[]
 }
 
 const Slider = ({data} : {data: LocalData}) => {

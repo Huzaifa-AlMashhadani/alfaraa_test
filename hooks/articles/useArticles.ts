@@ -3,7 +3,7 @@ import {useState, useEffect} from 'react';
 export type articlesData = {
     id: number;
     title: string;
-    subtitle: string;
+    subTitle: string;
     image_url: string;
     content: string;
 }
@@ -11,7 +11,7 @@ export type articlesData = {
 export const usegetThereArticles = () => {
     const [data, setData] = useState<articlesData[]>([]);
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState<string>(null);
+    const [error, setError] = useState<string>("");
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -19,7 +19,7 @@ export const usegetThereArticles = () => {
                 const json = await res.json();
                 setData(json);
 
-            } catch (error) {
+            } catch (error:any) {
                 setError(error);
             } finally {
                 setLoading(false);
@@ -31,9 +31,9 @@ export const usegetThereArticles = () => {
 }
 
 export const useGetArticleById = (id:number) => {
-    const [data, setData] = useState<articlesData[]>([]);
+    const [data, setData] = useState<articlesData>();
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState<string>(null);
+    const [error, setError] = useState<string>("");
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -41,7 +41,7 @@ export const useGetArticleById = (id:number) => {
                 const json = await res.json();
                 setData(json);
 
-            } catch (error) {
+            } catch (error:any) {
                 setError(error);
             } finally {
                 setLoading(false);

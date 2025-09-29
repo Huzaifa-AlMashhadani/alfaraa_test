@@ -8,9 +8,9 @@ import { FaStar } from "react-icons/fa";
 import React, {useEffect, useState} from "react";
 import { useGetCategorieById} from "@/hooks/categorie/useCategories";
 import {useGetProducts} from "@/hooks/categorie/useGetProducts";
-import {addToCart} from "@/app/cart/cart";
 import Loading from "@/app/ui/loaders/Loading";
 import {convertPrice, currency} from "@/app/utils/currency";
+import {useCartContext} from "@/Context/CartContext";
 
 interface Props {
     params: Promise<{ id: string }>;
@@ -45,6 +45,7 @@ const Related = ({ id }: { id: number }) => {
     const { products, loading } = useGetProducts(id);
     const [curransy, setCurransy] = useState<keyof typeof currency>("SAR");
 
+    const {addToCart} = useCartContext();
     useEffect(() => {
         const saved = localStorage.getItem("currency");
         if (saved && saved in currency) {
@@ -52,7 +53,11 @@ const Related = ({ id }: { id: number }) => {
         }
     }, []);
 
+
+
     if (loading) return <Loading />;
+
+
 
     return (
         <div className="container">
@@ -88,17 +93,7 @@ const Related = ({ id }: { id: number }) => {
                                     </div>
                                 </a>
                                 <div className={styles.buttons}>
-                                    <button
-                                        onClick={() =>
-                                            addToCart({
-                                                id: item.id,
-                                                name: item.title,
-                                                price: item.price,
-                                                quantity: 1,
-                                                image: item.thumbnail,
-                                            })
-                                        }
-                                    >
+                                    <button onClick={()=>addToCart(item.id, 1)}>
                                         Add Cart
                                     </button>
                                 </div>
@@ -120,7 +115,7 @@ const Categorie = ({params} : Props) =>{
     const {id} = React.use(params);
     return (
         <div className="Section">
-            <Navbar data={data.navbar}/>
+            <Navbar />
             <div className={styles.section}>
                 <Ad id={Number(id)}/>
                 <Related id={Number(id)}/>

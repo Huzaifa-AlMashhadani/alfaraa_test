@@ -46,10 +46,11 @@ interface ProductData{
     old_price: string;
     thumbnail?: string;
     image?: string;
-    reviews?: string[];
+    reviews?: Review[];
     units?: string[];
     alternative_parts?: string[];
     images: string[];
+    reviews_count: number
 }
 
 interface ProductProps {
@@ -99,7 +100,7 @@ const Card = ({data} : {data  : ProductData})=>{
     };
 
 
-    const averageRating = calculateAverage(data.reviews);
+    const averageRating = calculateAverage(data.reviews ?? []);
 
     const renderStars = (average: number) => {
         const stars = [];
@@ -163,7 +164,7 @@ const Card = ({data} : {data  : ProductData})=>{
                             (<span>reviews</span> {data.reviews_count || 0} )
                         </span>
                     </div>
-                    <h3>{data.title || data.ar_name}</h3>
+                    <h3>{data.ar_name}</h3>
                     <div className={styles.price}><h3>
                         {convertPrice(Number(data.price), curransy)}
                         <span>{data.old_price ? ` ${convertPrice(Number(data.old_price), curransy)}` : ""}</span>

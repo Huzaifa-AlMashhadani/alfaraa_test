@@ -75,7 +75,7 @@ const Register = () => {
 
     return (
         <>
-            <Navbar data={data.navbar}/>
+            <Navbar />
             <div className="container">
                 <div className={styles.login}>
                     <div className={styles.picture}>

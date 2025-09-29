@@ -1,4 +1,5 @@
 "use client";
+
 import {useRouter, useSearchParams} from "next/navigation";
 import { IoCubeSharp } from "react-icons/io5";
 import styles from "./checkout.module.css";
@@ -7,9 +8,9 @@ import Footer from "../../components/Footer/footer";
 import data from "@/app/data/home";
 import { useUser } from "@/hooks/auth/useAuth"; // ✅ الاسم يتبع قواعد الهوكات
 import Loading from "@/app/ui/loaders/Loading";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
-const OrderTotal = ({ price }) => {
+const OrderTotal = ({ price }: {price: number|null}) => {
     const shipping = 12;
     const total = Number(price || 0) + shipping;
 
@@ -34,11 +35,11 @@ const OrderTotal = ({ price }) => {
     );
 };
 
-const Message = ({ price }) => (
+const Message = ({ price }: {price:number|null}) => (
     <div className={styles.message}>
         <IoCubeSharp size={22} color="rgba(244, 63, 94, 1)" />
         <h5>
-            Shipping & taxes <span>${200 - price}</span> calculated at checkout
+            Shipping & taxes <span>${200 - Number(price)}</span> calculated at checkout
         </h5>
         <div className={styles.bar}>
             <div className="fill" style={{ width: "70%", height: 3 }}></div>
@@ -47,7 +48,7 @@ const Message = ({ price }) => (
 );
 
 
-const Form = ({ price, userData, product_id }) => {
+const Form = ({ price, userData, product_id } : {price:number | null ,userData:any, product_id:number | null | string }) => {
     const [streetAddress, setStreetAddress] = useState("");
     const [city, setCity] = useState("");
     const [orderNotes, setOrderNotes] = useState("");
@@ -67,7 +68,7 @@ const Form = ({ price, userData, product_id }) => {
         return Object.keys(newErrrors).length === 0;
     }
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e:any) => {
         e.preventDefault();
 
         if(!validate()) {
@@ -339,9 +340,15 @@ function SuccessModal() {
 }
 
 const CheckoutPage = () => {
-    const searchParams = useSearchParams();
-    const productId = searchParams.get("product_id");
-    const price = searchParams.get("price");
+    const [productId, setProductId] = useState<string | null>(null);
+    const [price, setPrice] = useState<number>(0);
+    const searchParams = typeof window !== "undefined" ? useSearchParams() : null;
+
+    useEffect(() => {
+        if (!searchParams) return;
+        setProductId(searchParams.get("product_id"));
+        setPrice(Number(searchParams.get("price") ?? 0));
+    }, [searchParams]);
 
     const { userData, loading, error } = useUser(); // ✅
 
@@ -349,11 +356,11 @@ const CheckoutPage = () => {
 
     return (
         <div className={styles.checkout}>
-            <Navbar data={data.navbar} />
+            <Navbar  />
             <div className="container">
                 <div className={styles.checkoutContent}>
-                    <Form price={price} userData={userData} product_id={productId}/>
-                    <OrderTotal price={price} />
+                    <Form price={Number(price)} userData={userData} product_id={productId}/>
+                    <OrderTotal price={Number(price)} />
                 </div>
             </div>
             <Footer />

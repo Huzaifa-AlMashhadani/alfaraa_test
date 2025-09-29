@@ -112,7 +112,7 @@ const SaerchQuery = ({ results }: { results: any[] }) => {
 const Middle = ({ data }: { data: NavbarData }) => {
     const [cartCount, setCartCount] = useState<number>(0);
     const [query, setQuery] = useState<string>("");
-    const [faver, setFaver] = useState([]);
+    const [faver, setFaver] = useState<any[]>([]);
     const {cart} = useCartContext();
 
 
@@ -133,7 +133,6 @@ const Middle = ({ data }: { data: NavbarData }) => {
     useEffect(() => {
         const getUserData = async () => {
             const user = await getUser();
-            const faver = await getFavorites()
             if (!user || !user.name) return;
 
             setProfileData({
@@ -143,7 +142,7 @@ const Middle = ({ data }: { data: NavbarData }) => {
                 country: user.country || "",
                 avatar_url: user.avatar_url || "",
             });
-            setFaver(faver);
+
         };
 
 
@@ -273,7 +272,7 @@ const Footer = ({ data }: { data: NavbarData }) => (
                 <a href="#">
                     <h5>كل الاقسام</h5>
                 </a>
-                <AllSctionsWindow data={data} />
+                <AllSctionsWindow  />
             </div>
             <div className={styles.navHomeSectins}>
                 <a href="/">

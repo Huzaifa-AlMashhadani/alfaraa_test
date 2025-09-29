@@ -17,8 +17,33 @@ interface unit  {
     stock: number;
     unit_name:string
 }
-interface ProductData {
-    id: string;
+
+
+interface reviews {
+    id: number;
+    user_id: number;
+    stars: number;
+    comment: string;
+    created_at: string ;
+}
+
+interface product_units{
+    id: number;
+    product_id:number;
+    unit_id:number;
+    price:string | number;
+    stock: number;
+    products: string[] | null;
+}
+
+interface images{
+    id: number;
+    product_id:number;
+    image_url: string;
+}
+
+interface ProductData{
+    id: number;
     ar_name: string;
     en_name: string;
     ar_description: string;
@@ -26,9 +51,23 @@ interface ProductData {
     price: string;
     old_price: string;
     thumbnail?: string;
+    categories_id?: number;
     image?: string;
-    units: unit[];
+    reviews?: reviews[];
+    reviews_count?: number;
+    product_units: product_units[];
+    part_number: string[] ;
+    images: images[];
+    store_id: number | number;
+    message: string | null;
+
 }
+
+interface ProductProps {
+    ProdutData: ProductData;
+    ProductCombilitiy: ProductCombilitiy;
+}
+
 
 interface Props {
     params: Promise<{ id: string }>;
@@ -70,13 +109,12 @@ const ProductPage = ({ params }: Props) => {
         fetchData();
     }, [id]);
 
-    const {addToCart, getCartData} = useCart();
 
     if (!product) return <Loading />
 
     return (
         <div className="Product">
-            <Navbar data={data.navbar} />
+            <Navbar  />
 
                 <Product ProdutData={product} ProductCombilitiy={compatibility} />
 

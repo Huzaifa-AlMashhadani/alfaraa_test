@@ -1,22 +1,11 @@
 import React from "react";
 
-const AlternativePartsTable = ({ alternativeParts }) => {
+const AlternativePartsTable = ({ alternativeParts }: {alternativeParts:any[]}) => {
     if (!alternativeParts || alternativeParts.length === 0) {
         return <p>لا توجد أرقام بديلة متاحة للمنتج.</p>;
     }
 
-    const tableStyle = {
-        borderCollapse: "collapse",
-        width: "100%",
-        fontFamily: "Arial, sans-serif",
-    };
 
-    const thStyle = {
-        border: "1px solid #333",
-        padding: "8px",
-        backgroundColor: "#f2f2f2",
-        textAlign: "left",
-    };
 
     const tdStyle = {
         border: "1px solid #333",
@@ -28,11 +17,11 @@ const AlternativePartsTable = ({ alternativeParts }) => {
     };
 
     return (
-        <table style={tableStyle}>
+        <table >
             <thead>
             <tr>
-                <th style={thStyle}>الشركة</th>
-                <th style={thStyle}>رقم البديل</th>
+                <th >الشركة</th>
+                <th >رقم البديل</th>
             </tr>
             </thead>
             <tbody>

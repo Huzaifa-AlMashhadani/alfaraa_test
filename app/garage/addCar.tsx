@@ -8,9 +8,12 @@ type Module = { id: number; ar_name: string; make_by: number }
 type ModuleDate = { id: number; date_form: number; date_to: number; module_by: number }
 type Engine = { id: number; ar_name: string; en_name: string; module_date_by: number }
 
-type ApiData = { brands: Brand[]; module: Module[]; enginees: Engine[]; ModuleDate: ModuleDate[] }
+type ApiData = { brands: Brand[]; module: Module[]; enginees: Engine[]; ModuleDate: ModuleDate[];
+    onClose: () => void;
+    onAdd: (newCar: any) => void;
+}
 
-const AddCar = ({ data }: { data: ApiData }) => {
+const AddCar = ({ data}: { data: ApiData  }) => {
     const [image, setImage] = useState<File | null>(null)
     const [selectedBrand, setSelectedBrand] = useState<number | null>(null)
     const [selectedModule, setSelectedModule] = useState<number | null>(null)
@@ -51,7 +54,10 @@ const AddCar = ({ data }: { data: ApiData }) => {
         }
 
         const formData = new FormData()
-        formData.append("image_url", image)
+        if(image){
+            formData.append("image_url", image)
+        }
+
         formData.append("car_name", filteredModules.find((m) => m.id === selectedModule)?.ar_name || "")
         formData.append("brand", data.brands.find((b) => b.id === selectedBrand)?.ar_name || "")
         formData.append("module", filteredModules.find((m) => m.id === selectedModule)?.ar_name || "")

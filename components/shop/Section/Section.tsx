@@ -41,7 +41,7 @@ interface ProductProps {
     ProdutData: ProductData;
     ProductCombilitiy: ProductCombilitiy;
 }
-const Ad = ({data} : {data: ProductProps})=>{
+const Ad = ({data} : {data: any})=>{
     return (
         <div className="container" >
             <div className={styles.ad}>
@@ -144,7 +144,7 @@ const Related = ({data} : {data: any}) =>{
                </div>
            </div>
          <div className={styles.related}>
-                    {data.map((item) =>(
+                    {data.map((item:ProductData) =>(
                         <div key={item.id}>
                             <Card product={item}/>
                         </div>

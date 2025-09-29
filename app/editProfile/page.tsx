@@ -78,7 +78,9 @@ const EditProfile = () => {
         formData.append("phone", profileData.phone);
         formData.append("email", profileData.email);
         formData.append("country", profileData.country);
-        formData.append("avatar_url", selectedImage);
+        if (selectedImage) {
+            formData.append("avatar_url", selectedImage);
+        }
         
 
         try {
@@ -103,7 +105,7 @@ const EditProfile = () => {
 
     return (
         <>
-            <Navbar data={data.navbar} />
+            <Navbar  />
 
             <div className={styles.editProfile}>
                 <div className={styles.image}>

@@ -42,7 +42,7 @@ const Hero = ({data} : {data: ApiData})=>{
         <div className={styles.hero}>
             <h1 className={styles.title}>كل ما تحتاجه في مكان واحد</h1>
             <span>ادخل بيانات سيارتك واحصل على القطع المتوافقة فقط</span>
-            <Search data={data}/>
+            <Search />
             <Link href={"/shop"} className={styles.allProdcutBtn}>كل المنتجات </Link>
             <div className="container">
                 <div className={styles.serveses}>

@@ -1,4 +1,5 @@
 "use client"
+export const dynamic = "force-dynamic";
 
 import styles from "./SearchResult.module.css";
 import Navbar from "../../components/Navbar/Navabr";
@@ -16,15 +17,26 @@ import Loading from "@/app/ui/loaders/Loading";
 
 
 const SearchResult = () => {
-    const searchParams = useSearchParams();
 
     // قراءة المعاملات من الرابط
-    const brand = searchParams.get("brand");
-    const model = searchParams.get("model");
-    const year = searchParams.get("year");
-    const engine = searchParams.get("engine");
-    const q = searchParams.get("q");
-    const company = searchParams.get("company");
+    const [brand, setBrand] = useState<string | null>(null);
+    const [model, setModel] = useState<string | null>(null);
+    const [year, setYear] = useState<string | null>(null);
+    const [engine, setEngine] = useState<string | null>(null);
+    const [q, setQ] = useState<string | null>(null);
+    const [company, setCompany] = useState<string | null>(null);
+
+    useEffect(() => {
+        if (typeof window === "undefined") return; // تأكد أن الكود على العميل
+        const searchParams = useSearchParams();
+        setBrand(searchParams.get("brand"));
+        setModel(searchParams.get("model"));
+        setYear(searchParams.get("year"));
+        setEngine(searchParams.get("engine"));
+        setQ(searchParams.get("q"));
+        setCompany(searchParams.get("company"));
+    }, []);
+
 
     const [query, setQuery] = useState(q || ""); // input المستخدم
     const [results, setResults] = useState<any[]>([]);
@@ -123,7 +135,7 @@ const SearchResult = () => {
 
     return (
         <div className={styles.SearchResult}>
-            <Navbar data={data.navbar} />
+            <Navbar  />
             {query && query !=="" &&(
                 <h1 className={styles.title}>نتائج البحث عن: {query}</h1>
             )}
