@@ -54,9 +54,7 @@ export default function Home() {
     }, []);
 
 
-    if (!searchData) {
-        return <Loadin />;
-    }
+ 
 
     return (
         <>
