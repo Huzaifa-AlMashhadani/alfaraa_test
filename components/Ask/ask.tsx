@@ -17,42 +17,67 @@ const Ask = ()=>{
                         <h3>كيف اعرف ان القطع توافق سياراتي ؟<span><IoIosArrowDown />
                          </span></h3>
                         <div className={styles.answer}>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt hic dolore labore dolorum ut. Nesciunt velit molestias, temporibus illum ea assumenda quam recusandae provident alias dolorum incidunt dolorem error aliquid voluptates? Doloribus deserunt nam esse consectetur perferendis! Nesciunt, tempora sit laudantium earum corporis sapiente illum molestiae enim odio, sunt asperiores perferendis consequatur a nihil ipsam facere excepturi ex animi. Iste, iusto ea? Delectus minus modi veritatis! Voluptas optio quae vitae veniam error sapiente ad quaerat distinctio necessitatibus inventore reiciendis ipsum dolore, debitis fuga nostrum eaque impedit porro. Pariatur unde atque dignissimos iure impedit quisquam asperiores recusandae, eius ex rerum nemo!</p>
+                            <p>عليك أولاً إضافة سيارتك إلى الجراج في الموقع.
+                                بعد ذلك سيتحقق النظام من مدى توافق القطعة مع سيارتك.
+                                نود التنويه إلى أن نظام التحقق لا يشمل جميع القطع، لذلك نوفر لك دعماً فنياً احترافياً وسريعاً للإجابة على استفساراتك والتأكد من توافق القطعة مع سيارتك.
+                                يمكنك التحقق من خلال النظام مباشرة أو عبر التواصل معنا على واتساب أو من خلال الدردشة المباشرة.</p>
                         </div>
                     </div>
                     <div className={styles.askes}>
-                        <h3>كم سوف يتاخر الشحن؟?<span><IoIosArrowDown />
-</span></h3>
+                        <h3>كم سوف يتاخر الشحن ?<span><IoIosArrowDown /></span></h3>
                         <div className={styles.answer}>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt hic dolore labore dolorum ut. Nesciunt velit molestias, temporibus illum ea assumenda quam recusandae provident alias dolorum incidunt dolorem error aliquid voluptates? Doloribus deserunt nam esse consectetur perferendis! Nesciunt, tempora sit laudantium earum corporis sapiente illum molestiae enim odio, sunt asperiores perferendis consequatur a nihil ipsam facere excepturi ex animi. Iste, iusto ea? Delectus minus modi veritatis! Voluptas optio quae vitae veniam error sapiente ad quaerat distinctio necessitatibus inventore reiciendis ipsum dolore, debitis fuga nostrum eaque impedit porro. Pariatur unde atque dignissimos iure impedit quisquam asperiores recusandae, eius ex rerum nemo!</p>
+                            <p>نحن نحرص دائمًا على توفير أفضل تجربة شحن ممكنة لعملائنا الكرام، حيث نعمل مع شركاء شحن موثوقين لضمان سرعة التوصيل وسلامة الطرود منذ لحظة استلامها وحتى وصولها إلى باب منزلك.
+
+                                يختلف وقت الشحن من منطقة إلى أخرى حسب موقعك الجغرافي والإجراءات المطلوبة لإتمام عملية التسليم، مثل التحقق من المعلومات أو التخليص الجمركي في بعض الحالات.
+
+                                بعد تأكيد طلبك، سيقوم النظام بإشعارك تلقائيًا بموعد الشحن المتوقع، مع إمكانية تتبع حالة شحنتك خطوة بخطوة عبر حسابك أو من خلال إشعارات البريد الإلكتروني والرسائل النصية.
+
+                                هدفنا أن تصلك شحنتك في أسرع وقت ممكن وبأمان تام، مع إبقائك على اطلاع دائم بكل تحديث يخص طلبك حتى لحظة استلامه.</p>
                         </div>
                     </div>
                     <div className={styles.askes}>
-                        <h3>بهلهناك ضريبة على الشحن ؟<span><IoIosArrowDown />
+                        <h3>هل هناك ضريبة على الشحن ؟<span><IoIosArrowDown />
 </span></h3>
                         <div className={styles.answer}>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt hic dolore labore dolorum ut. Nesciunt velit molestias, temporibus illum ea assumenda quam recusandae provident alias dolorum incidunt dolorem error aliquid voluptates? Doloribus deserunt nam esse consectetur perferendis! Nesciunt, tempora sit laudantium earum corporis sapiente illum molestiae enim odio, sunt asperiores perferendis consequatur a nihil ipsam facere excepturi ex animi. Iste, iusto ea? Delectus minus modi veritatis! Voluptas optio quae vitae veniam error sapiente ad quaerat distinctio necessitatibus inventore reiciendis ipsum dolore, debitis fuga nostrum eaque impedit porro. Pariatur unde atque dignissimos iure impedit quisquam asperiores recusandae, eius ex rerum nemo!</p>
+                            <p>لا تفرض شركة الفارع أي ضريبة على الشحن، فجميع رسوم الضريبة (إن وُجدت) تُحدَّد من قبل الدولة المستقبِلة للشحنة.
+
+                                يتم الشحن من المملكة العربية السعودية، ولا توجد ضريبة مضافة من جانبنا على الشحنات الدولية.
+
+                                مع ذلك، قد تقوم بعض الدول بفرض رسوم جمركية أو ضريبة استيراد عند دخول الشحنة إلى أراضيها، ويُعد ذلك خارج مسؤوليتنا.
+
+                                ننصح عملاءنا بالاطلاع على قوانين الجمارك والضرائب في بلدانهم لمعرفة ما إذا كانت تنطبق أي رسوم إضافية قبل إتمام الطلب.</p>
                         </div>
                     </div>
-                    <div className={styles.askes}>
-                        <h3>هل يمكن ان اصبح تاجرا معكم <span><IoIosArrowDown />
-</span></h3>
-                        <div className={styles.answer}>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt hic dolore labore dolorum ut. Nesciunt velit molestias, temporibus illum ea assumenda quam recusandae provident alias dolorum incidunt dolorem error aliquid voluptates? Doloribus deserunt nam esse consectetur perferendis! Nesciunt, tempora sit laudantium earum corporis sapiente illum molestiae enim odio, sunt asperiores perferendis consequatur a nihil ipsam facere excepturi ex animi. Iste, iusto ea? Delectus minus modi veritatis! Voluptas optio quae vitae veniam error sapiente ad quaerat distinctio necessitatibus inventore reiciendis ipsum dolore, debitis fuga nostrum eaque impedit porro. Pariatur unde atque dignissimos iure impedit quisquam asperiores recusandae, eius ex rerum nemo!</p>
-                        </div>
-                    </div>
+
                     <div className={styles.askes}>
                         <h3>كيف اتتبع الطلب <span><IoIosArrowDown />
 </span></h3>
                         <div className={styles.answer}>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt hic dolore labore dolorum ut. Nesciunt velit molestias, temporibus illum ea assumenda quam recusandae provident alias dolorum incidunt dolorem error aliquid voluptates? Doloribus deserunt nam esse consectetur perferendis! Nesciunt, tempora sit laudantium earum corporis sapiente illum molestiae enim odio, sunt asperiores perferendis consequatur a nihil ipsam facere excepturi ex animi. Iste, iusto ea? Delectus minus modi veritatis! Voluptas optio quae vitae veniam error sapiente ad quaerat distinctio necessitatibus inventore reiciendis ipsum dolore, debitis fuga nostrum eaque impedit porro. Pariatur unde atque dignissimos iure impedit quisquam asperiores recusandae, eius ex rerum nemo!</p>
+                            <p>في الصفحة الرئيسية، ستجد في أعلى شريط التنقل خيار "تتبع الشحنة".
+                                عند النقر عليه، سيتم توجيهك مباشرة إلى صفحة التتبع الخاصة بحسابك، حيث يمكنك الاطلاع على جميع طلباتك ومعرفة حالة كل شحنة بالتفصيل، بدءًا من تجهيز الطلب وحتى وصوله إلى عنوانك المسجل.</p>
                         </div>
                     </div>
                     <div className={styles.askes}>
                         <h3>كيف اتواصل معكم ؟ <span><IoIosArrowDown />
 </span></h3>
                         <div className={styles.answer}>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt hic dolore labore dolorum ut. Nesciunt velit molestias, temporibus illum ea assumenda quam recusandae provident alias dolorum incidunt dolorem error aliquid voluptates? Doloribus deserunt nam esse consectetur perferendis! Nesciunt, tempora sit laudantium earum corporis sapiente illum molestiae enim odio, sunt asperiores perferendis consequatur a nihil ipsam facere excepturi ex animi. Iste, iusto ea? Delectus minus modi veritatis! Voluptas optio quae vitae veniam error sapiente ad quaerat distinctio necessitatibus inventore reiciendis ipsum dolore, debitis fuga nostrum eaque impedit porro. Pariatur unde atque dignissimos iure impedit quisquam asperiores recusandae, eius ex rerum nemo!</p>
+                            <p>
+                                يمكنك التواصل معنا بالطريقة الأنسب لحالتك:<br/><br/>
+
+                                <strong>استفسارات المنتجات:</strong> إذا كان لديك سؤال حول منتج معين، يمكنك مراسلة فريق
+                                الدعم الفني مباشرة عبر الرسائل المباشرة أو من خلال واتساب.<br/><br/>
+
+                                <strong>مشكلات الشحن:</strong> في حال واجهت تأخيرًا أو مشكلة في شحنتك، يمكنك التواصل مع
+                                الدعم عبر الرسائل المباشرة أو إرسال تفاصيل المشكلة إلى البريد الإلكتروني المخصص
+                                للدعم.<br/><br/>
+
+                                <strong>الحالات الخاصة:</strong> إذا كانت لديك حالة خاصة أو طلب استثنائي، يمكنك الاتصال
+                                بنا مباشرة عبر الهاتف أو مراسلتنا عبر البريد الإلكتروني.<br/><br/>
+
+                                نوفر جميع هذه القنوات لضمان سهولة وسرعة التواصل، اختر الطريقة التي تناسبك لتحصل على
+                                المساعدة بأسرع وقت ممكن.
+                            </p>
+
                         </div>
                     </div>
                 </div>

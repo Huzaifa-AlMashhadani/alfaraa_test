@@ -1,6 +1,7 @@
 import { IoStar } from "react-icons/io5"
 import styles from "./CustomerReviews.module.css"
-
+import {useInView} from "react-intersection-observer";
+import ElmentLoadin from "@/components/elemetLoadin/elmentLoadin";
 
 const ReviewCard = ()=>{
     return (
@@ -23,31 +24,34 @@ const ReviewCard = ()=>{
 } 
 
 const CustomerReviews = ()=>{
+    const {ref, inView} = useInView({threshold:0.1, triggerOnce:true})
  
     return (
-        <div className="container" >
-        <div className={styles.CustomerReviews}>
-            
+        <div className="container" ref={ref}>
+            {inView ? (
+                <div className={styles.CustomerReviews}>
 
-            
-            <div className={styles.cardSummary}>
-                <h3>Excellend</h3>
-                <div className={styles.stars}>
-                    <IoStar size={20} color="#fff" className="star"/>
-                    <IoStar size={20} color="#fff" className="star"/>
-                    <IoStar size={20} color="#fff" className="star"/>
-                    <IoStar size={20} color="#fff" className="star"/>
-                    <IoStar size={20} color="#fff" className="star"/>
+
+
+                    <div className={styles.cardSummary}>
+                        <h3>Excellend</h3>
+                        <div className={styles.stars}>
+                            <IoStar size={20} color="#fff" className="star"/>
+                            <IoStar size={20} color="#fff" className="star"/>
+                            <IoStar size={20} color="#fff" className="star"/>
+                            <IoStar size={20} color="#fff" className="star"/>
+                            <IoStar size={20} color="#fff" className="star"/>
+                        </div>
+                        <div className={styles.based}>
+                            <span>Based on <a href="">2,167 reviews</a></span>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, rem.  </p>
+                    </div>
+                    <ReviewCard />
+                    <ReviewCard />
+                    <ReviewCard />
                 </div>
-                <div className={styles.based}>
-                    <span>Based on <a href="">2,167 reviews</a></span>
-                </div>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, rem.  </p>
-            </div>
-            <ReviewCard />
-            <ReviewCard />
-            <ReviewCard />
-            </div>
+            ): <ElmentLoadin />}
         </div>
     )
 }

@@ -4,20 +4,19 @@
 import styles from "./register.module.css";
 import Navbar from "../../components/Navbar/Navabr";
 import Footer from "../../components/Footer/footer";
-import data from "@/app/data/home"
 import {useState} from "react";
 
 
 const Form = () => {
-    const [name, setName] = useState("");
-    const [phone, setPhone] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [password_confirmation, setPassword_confirmation] = useState("");
-    const [error, setError] = useState("");
+    const [name, setName] = useState<string>("");
+    const [phone, setPhone] = useState<string>("");
+    const [email, setEmail] = useState<string>("");
+    const [password, setPassword] = useState<string>("");
+    const [password_confirmation, setPassword_confirmation] = useState<string>("");
+    const [error, setError] = useState<string>("");
     const handleLogin = async () => {
         try {
-            if(name === "" || email === "" || phone === "" || password === "", password_confirmation === ""){
+            if(name === "" || email === "" || phone === "" || password === ""|| password_confirmation === ""){
                 setError("كل الحقول مطلوبه ");
                 return;
             }

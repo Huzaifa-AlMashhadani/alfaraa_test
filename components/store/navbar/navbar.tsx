@@ -11,8 +11,8 @@ const Navbar = ({Store} : {Store:any}) =>{
             <div className={styles.search}>
                 <input type="search" name="" id="" placeholder="ابحث عن منتج"/>
             </div>
-            <IoSearchOutline size={33}/>
-            <IoCartOutline size={33}/>
+            <IoSearchOutline  className={styles.icons}/>
+            <IoCartOutline  className={styles.icons}/>
           </div>
     )
 }

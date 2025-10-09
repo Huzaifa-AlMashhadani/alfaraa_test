@@ -100,6 +100,7 @@ const FilterByBrand = () =>{
 const ProductCatregories = ({setDiscount, setReviews, setPriceRange} : Props) => {
     return (
         <div className={styles.productCatregories}>
+
             <h2>فلاتر البحث </h2>
             <Optaons     setDiscount={setDiscount}
                          setReviews={setReviews}

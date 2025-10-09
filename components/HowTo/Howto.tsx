@@ -1,4 +1,6 @@
 import styles from "./howto.module.css"
+import {useInView} from "react-intersection-observer";
+import ElmentLoadin from "@/components/elemetLoadin/elmentLoadin";
 
 const SectionAd = ()=>{
     return (
@@ -56,14 +58,20 @@ const Main = ()=>{
 
 const HowTo = ()=>{
 
+    const {ref, inView} = useInView({threshold:0.1, triggerOnce:true});
+
     return(
-<div className="container">
-    <div className={styles.content}>
-        <SectionAd/>
-        <SectionAd/>
-    </div>
-        <Main/>
-    </div>
+        <div ref={ref}>
+            {inView ?(
+                <div className="container">
+                    <div className={styles.content}>
+                        <SectionAd/>
+                        <SectionAd/>
+                    </div>
+                    <Main/>
+                </div>
+            ): <ElmentLoadin/>}
+        </div>
     )
     
 }

@@ -10,7 +10,7 @@ import { useUser } from "@/hooks/auth/useAuth"; // ✅ الاسم يتبع قو�
 import Loading from "@/app/ui/loaders/Loading";
 import {useEffect, useState} from "react";
 
-const OrderTotal = ({ price }: {price: number|null}) => {
+const OrderTotal = ({ price }: {price: number}) => {
     const shipping = 12;
     const total = Number(price || 0) + shipping;
 
@@ -35,7 +35,7 @@ const OrderTotal = ({ price }: {price: number|null}) => {
     );
 };
 
-const Message = ({ price }: {price:number|null}) => {
+const Message = ({ price }: {price:number}) => {
     if (price > 200) return;
     return (
         <div className={styles.message}>
@@ -50,7 +50,7 @@ const Message = ({ price }: {price:number|null}) => {
 };
 
 
-const Form = ({ price, userData, product_id } : {price:number | null ,userData:any, product_id:number | null | string }) => {
+const Form = ({ price, userData, product_id } : {price:number  ,userData:any, product_id:number | null | string }) => {
     const [streetAddress, setStreetAddress] = useState("");
     const [city, setCity] = useState("");
     const [orderNotes, setOrderNotes] = useState("");

@@ -1,5 +1,7 @@
 import styles from "./Articles.module.css"
 import {articlesData, usegetThereArticles} from "@/hooks/articles/useArticles";
+import {useInView} from "react-intersection-observer";
+import ElmentLoadin from "@/components/elemetLoadin/elmentLoadin";
 
 const Card = ({data} : {data: articlesData})=>{
     return(
@@ -16,15 +18,18 @@ const Card = ({data} : {data: articlesData})=>{
 
 
 const Articles = ()=>{
+    const {ref, inView} = useInView({threshold:0.1, triggerOnce:true});
     const {data} = usegetThereArticles()
     return (
-        <div className="container">
-            <div className={styles.Articles}>
-                {data.map((item)=>(
-                  <Card data={item} key={item.id}/>
-                ))}
-               
-            </div>
+        <div className="container" ref={ref}>
+            {inView ?(
+                <div className={styles.Articles}>
+                    {data.map((item)=>(
+                        <Card data={item} key={item.id}/>
+                    ))}
+
+                </div>
+            ): <ElmentLoadin />}
         </div>
     )
 }

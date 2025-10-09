@@ -8,11 +8,9 @@ import { FaRegUser } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { getUser } from "@/app/utils/auth";
 import useLiveSearch from "@/app/utils/products";
-import {getFavorites} from "@/app/utils/favorites";
 import {useGetAllCategories} from "@/hooks/categorie/useCategories";
 import {currency} from "@/app/utils/currency";
 import DATA from "@/app/data/home"
-import {useCart} from "@/hooks/cart/useCart";
 import {useCartContext} from "@/Context/CartContext";
 import Link from "next/link";
 type LanguageItem = { id: number; value: string; language: string };

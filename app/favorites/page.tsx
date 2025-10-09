@@ -1,11 +1,11 @@
 "use client";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import styles from "./favorites.module.css";
 import { MdDelete } from "react-icons/md";
 import Navabr from "@/components/Navbar/Navabr";
-import data from "@/app/data/home";
+
 import Footer from "@/components/Footer/footer";
-import {getFavorites} from "@/app/utils/favorites";
+
 
 type FavoriteItem = {
     id: number;
@@ -18,19 +18,9 @@ type FavoriteItem = {
 
 export default function FavoritesPage() {
     const [favorites, setFavorites] = useState<FavoriteItem[]>([]);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState<boolean | string>(true);
 
-    // جلب بيانات المفضلة
 
-    // useEffect(() => {
-    //
-    //     const getFavortie = async () =>{
-    //         const favorites = await getFavorites();
-    //         setFavorites(favorites);
-    //     }
-    //     getFavortie();
-    //     setLoading(false);
-    // }, []);
 
     // حذف عنصر من المفضلة
     const removeFavorite = async (product_id: number) => {

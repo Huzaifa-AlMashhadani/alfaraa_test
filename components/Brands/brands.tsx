@@ -1,5 +1,7 @@
 import styles from "./brands.module.css"
 import Link from "next/link";
+import { useInView } from "react-intersection-observer";
+import Loading from "@/app/ui/loaders/Loading";
 
 type LocalData = {
     id: number
@@ -25,11 +27,16 @@ const BrandCard = ({data}: {data : LocalData[]})=>{
 }
 
 const Brands = ({data} : {data : LocalData[]})=>{
+    const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true });
+
     return (
        <div className="container">
         <h1 className={styles.title}>ابرز الشركات </h1>
-         <div className={styles.brands}>
-            <BrandCard data={data}/>
+         <div className={styles.brands} ref={ref}>
+
+                 {inView ? <BrandCard data={data}/> : <Loading />}
+
+
         </div>
        </div>
     )

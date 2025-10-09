@@ -2,12 +2,8 @@
 import { CiHeart } from "react-icons/ci"
 import {FaStar, FaStarHalfAlt} from "react-icons/fa"
 import styles from "./card.module.css"
-import { addToCart } from "@/app/cart/cart"
-import {addFavorite, getFavorites} from "@/app/utils/favorites";
 import React, {useEffect, useState} from "react";
-import { FcLike } from "react-icons/fc";
 import {convertPrice, currency} from "@/app/utils/currency";
-import Loading from "@/app/ui/loaders/Loading";
 import Link from "next/link";
 import { useCartContext } from "@/Context/CartContext";
 import {FaRegStar} from "react-icons/fa6";
@@ -160,7 +156,7 @@ const Card = ({data} : {data  : ProductData})=>{
                         <span className={styles.stars}>
                      {renderStars(averageRating)}
                     </span>
-                        <span className={styles.reviewCount}>
+                        <span >
                             (<span>reviews</span> {data.reviews_count || 0} )
                         </span>
                     </div>

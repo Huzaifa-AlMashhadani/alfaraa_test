@@ -68,11 +68,12 @@ padding: 24px;
 }
 .middle h1{
     font-size: 18px;
-    
+    margin-bottom: 20px;
 }
 .middle h3{
     font-size: 16px;
     margin: 0;
+    margin-bottom: 10px;
 }
 .middle span{
     color: #94A3B8;

@@ -1,13 +1,13 @@
 "use client";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
-
 import "swiper/css";
 import styles from "./slider.module.css";
 import Card from "../Card/Card";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import {useEffect, useState} from "react";
+import { useInView } from "react-intersection-observer";
+import Loading from "@/app/ui/loaders/Loading";
 
 interface Review {
     id: number;
@@ -40,60 +40,64 @@ type LocalData = {
 
 const Slider = ({data} : {data: LocalData}) => {
 
+    const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true });
 
 
     return (
-    <div className={styles.silder}>
-      <div className="container">
-        <div className={styles.silderTitle}>
-          <a href="">عرض الكل</a>
-          <div className={styles.title}>
-            <h3> {data?.title}</h3> <span>اكثر المنتجات مبيعا هذا الشهر</span>
-          </div>
-        </div>
+    <div className={styles.silder} ref={ref}>
+        {inView ? (
+            <div className="container">
+                <div className={styles.silderTitle}>
+                    <a href="">عرض الكل</a>
+                    <div className={styles.title}>
+                        <h3> {data?.title}</h3> <span>اكثر المنتجات مبيعا هذا الشهر</span>
+                    </div>
+                </div>
 
-        <Swiper
-  spaceBetween={20}
-  slidesPerView={1} // الافتراضي للموبايل
-  pagination={{ type: "fraction" }}
-  navigation={true}
-  loop={true}
-  autoplay={{
-    delay: 2000,
-    disableOnInteraction: false,
-  }}
-  modules={[Autoplay, Navigation, Pagination]}
-  breakpoints={{
-    // شاشات أكبر من 640px
-    640: {
-      slidesPerView: 2,
-      spaceBetween: 20,
-    },
-    // شاشات أكبر من 768px (تابلت)
-    768: {
-      slidesPerView: 3,
-      spaceBetween: 30,
-    },
-    // شاشات أكبر من 1024px (لابتوب)
-    1024: {
-      slidesPerView: 4,
-      spaceBetween: 40,
-    },
-    // شاشات أكبر من 1280px (ديسكتوب كبير)
-    1280: {
-      slidesPerView: 5,
-      spaceBetween: 50,
-    },
-  }}
->
-  {data.cardsData.map((item) => (
-    <SwiperSlide key={item.id}>
-      <Card data={item} />
-    </SwiperSlide>
-  ))}
-</Swiper>
+                <Swiper
+                    spaceBetween={20}
+                    slidesPerView={1} // الافتراضي للموبايل
+                    pagination={{ type: "fraction" }}
+                    navigation={true}
+                    loop={true}
+                    autoplay={{
+                        delay: 2000,
+                        disableOnInteraction: false,
+                    }}
+                    modules={[Autoplay, Navigation, Pagination]}
+                    breakpoints={{
+                        // شاشات أكبر من 640px
+                        640: {
+                            slidesPerView: 2,
+                            spaceBetween: 20,
+                        },
+                        // شاشات أكبر من 768px (تابلت)
+                        768: {
+                            slidesPerView: 3,
+                            spaceBetween: 30,
+                        },
+                        // شاشات أكبر من 1024px (لابتوب)
+                        1024: {
+                            slidesPerView: 4,
+                            spaceBetween: 40,
+                        },
+                        // شاشات أكبر من 1280px (ديسكتوب كبير)
+                        1280: {
+                            slidesPerView: 5,
+                            spaceBetween: 50,
+                        },
+                    }}
+                >
+                    {data.cardsData.map((item) => (
+                        <SwiperSlide key={item.id}>
+                            <Card data={item} />
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
 
-      </div>
+            </div>
+        ):(<Loading />)}
+
     </div>
   );
 };
