@@ -5,6 +5,7 @@
     align-items: center;
     gap: 2rem;
     margin-top: 50px;
+    flex-wrap: wrap;
 }
 .brands img{
     width: 160px;

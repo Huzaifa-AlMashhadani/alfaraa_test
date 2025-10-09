@@ -26,9 +26,10 @@ const SearchResult = () => {
     const [q, setQ] = useState<string | null>(null);
     const [company, setCompany] = useState<string | null>(null);
 
+const searchParams = useSearchParams();
     useEffect(() => {
         if (typeof window === "undefined") return; // تأكد أن الكود على العميل
-        const searchParams = useSearchParams();
+        
         setBrand(searchParams.get("brand"));
         setModel(searchParams.get("model"));
         setYear(searchParams.get("year"));
@@ -67,38 +68,34 @@ const SearchResult = () => {
 
     // البحث بناءً على المواصفات أو اسم المنتج
     useEffect(() => {
-
         const fetchResults = async () => {
             try {
                 let url = "";
 
-                if (brand && model && year && engine) {
-                    // البحث بالمواصفات
+                if (brand && model && year) {
                     url = `${process.env.NEXT_PUBLIC_SERVER_APP_BASE_URL}/search?brand=${brand}&model=${model}&year=${year}&engine=${engine}`;
                 } else if (company) {
-                    // البحث باسم الشركة فقط
                     url = `${process.env.NEXT_PUBLIC_SERVER_APP_BASE_URL}/searchCompany?company=${encodeURIComponent(company)}`;
                 } else if (q) {
-                    // البحث باسم المنتج
                     url = `${process.env.NEXT_PUBLIC_SERVER_APP_BASE_URL}/products/search?q=${encodeURIComponent(q)}`;
-
                 }
+
 
                 if (url) {
                     const res = await fetch(url);
                     const data = await res.json();
-                    setResults(data);
+                    console.log("🔥 RAW RESULTS:", data);
+                    setResults(data.data || data);
                 } else {
                     setResults([]);
                 }
             } catch (err) {
-                console.error(err);
+                console.error("Fetch error:", err);
             }
         };
 
-
         fetchResults();
-    }, []);
+    }, [brand, model, year, engine, q, company]);
 
     if (!Data) {
         return <Loading />
@@ -132,6 +129,8 @@ const SearchResult = () => {
             return minOk && maxOk;
         });
     }
+
+    console.log(brand && model && year)
 
     return (
         <div className={styles.SearchResult}>

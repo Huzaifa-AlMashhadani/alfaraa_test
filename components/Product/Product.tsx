@@ -205,24 +205,24 @@ const TextContent = ({ProdutData, ProductCombilitiy}: {ProdutData: ProductData, 
             )}
 
             <div className={styles.actions}>
-                {ProdutData.part_number && ProdutData.part_number.length > 0 && (
-                    <select>
-                        {ProdutData.part_number.map((unit:any, index) => (
-                            <option key={unit.id ?? index} value={unit.unit_name}>
-                                {unit.unit_name}
-                            </option>
-                        ))}
-                    </select>
-                )}
+                {/*{ProdutData.part_number && ProdutData.part_number.length > 0 && (*/}
+                {/*    <select>*/}
+                {/*        {ProdutData.part_number.map((unit:any, index) => (*/}
+                {/*            <option key={unit.id ?? index} value={unit.unit_name}>*/}
+                {/*                {unit.unit_name}*/}
+                {/*            </option>*/}
+                {/*        ))}*/}
+                {/*    </select>*/}
+                {/*)}*/}
 
                 <div className={styles.atom}>
                     <span onClick={() => setAtom(atom + 1)}><GoPlus size={28}/></span>
                     <input type="number" min={1} value={atom} onChange={handleChange} className={styles.quantityInput}/>
                     <span onClick={()=> setAtom(Math.max(1, atom - 1))}><LuMinus size={28}/></span>
                 </div>
-                {ProdutData.product_units[0].stock > 0 ? (
+                {ProdutData.product_units.length > 0 ? (
                         <>
-                            <button className={styles.addToCartButton} onClick={handleAddToCart}>Add to Cart</button>
+                            <button className={styles.addToCartButton}  onClick={handleAddToCart}>Add to Cart</button>
                             <Link href={`/Checkout?product_id=${ProdutData.id}&price=${ProdutData.price}`}><button className={styles.BuyNowBtn}>Buy Now</button></Link>
                         </>
                 ):(
@@ -266,7 +266,7 @@ const TextContent = ({ProdutData, ProductCombilitiy}: {ProdutData: ProductData, 
                             </div>
                         ))
                     } </div>}
-                    {activeTab === "additional" && <div className={styles.alternativeParts}><AlternativePartsTable alternativeParts={ProdutData.product_units}/> </div>}
+                    {activeTab === "additional" && <div className={styles.alternativeParts}><AlternativePartsTable alternativeParts={ProdutData.part_number}/> </div>}
                     {activeTab === "reviews" &&  <div className={styles.reviews}><Reviews reviews={ProdutData.reviews ?? []} /></div> }
                 </div>
             </div>
@@ -286,7 +286,7 @@ const SliderShow = ({ProdutData} : {ProdutData: ProductData}) =>{
             </div>
             <div className="slider">
                 {ProdutData.images?.length > 0 && (
-                    <div style={{ display: "flex", gap: "10px", marginBottom: "20px" }}>
+                    <div className={styles.imagesSLider}>
                         {ProdutData.images.map((item, index) => (
                             <img key={index} src={item.image_url} alt={`image-${index}`} className={styles.SlideImages} onClick={()=>setActiveImage(item.image_url)}/>
                         ))}

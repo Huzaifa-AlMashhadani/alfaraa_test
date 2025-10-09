@@ -13,17 +13,18 @@ const Form = () => {
     const [phone, setPhone] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [password_confirmation, setPassword_confirmation] = useState("");
     const [error, setError] = useState("");
     const handleLogin = async () => {
         try {
-            if(name === "" || email === "" || phone === "" || password === ""){
+            if(name === "" || email === "" || phone === "" || password === "", password_confirmation === ""){
                 setError("كل الحقول مطلوبه ");
                 return;
             }
             const res = await fetch("http://127.0.0.1:8000/api/register", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({  name, phone, email, password }),
+                body: JSON.stringify({  name, phone, email, password , password_confirmation}),
             });
 
 
@@ -62,6 +63,11 @@ const Form = () => {
             <div >
                 <label htmlFor="password">كلمة المرور</label>
                 <input type="password" id="password" placeholder="كلمة المرور" value={password}   onChange={(e) => setPassword(e.target.value)} // <<< هذا ناقص
+                />
+            </div>
+            <div >
+                <label htmlFor="password_confirmation"> تاكيد كلمة المرور </label>
+                <input type="password" id="password_confirmation" placeholder="اعد كتابة كلمة المرور  " value={password_confirmation}   onChange={(e) => setPassword_confirmation(e.target.value)} // <<< هذا ناقص
                 />
             </div>
             <button onClick={handleLogin}>تسجيل الدخول</button>

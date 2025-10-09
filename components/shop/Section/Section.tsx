@@ -43,11 +43,13 @@ interface ProductProps {
 }
 const Ad = ({data} : {data: any})=>{
     return (
-        <div className="container" >
-            <div className={styles.ad}>
-            <img src={data?.image_url} alt="" />
-        </div>
-        </div>
+        <Link href={`/store/${data.store_id}`}>
+            <div className="container" >
+                <div className={styles.ad}>
+                    <img src={data?.image_url} alt="" />
+                </div>
+            </div>
+        </Link>
     )
 }
 const Card = ({product} : {product:any})=>{
@@ -145,7 +147,7 @@ const Related = ({data} : {data: any}) =>{
            </div>
          <div className={styles.related}>
                     {data.map((item:ProductData) =>(
-                        <div key={item.id}>
+                        <div key={item.id} className={styles.row}>
                             <Card product={item}/>
                         </div>
                     ))}

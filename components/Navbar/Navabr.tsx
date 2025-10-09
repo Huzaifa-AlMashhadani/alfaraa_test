@@ -73,7 +73,6 @@ const Top = ({ data }: { data: NavbarData }) => {
             </div>
 
             <div className={styles.linkes}>
-                <a href="/about-us">عنا</a>
                 <a href="/help">الأساله</a>
                 <a href="/track">تتبع الطلب</a>
             </div>

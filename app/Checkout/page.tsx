@@ -35,8 +35,10 @@ const OrderTotal = ({ price }: {price: number|null}) => {
     );
 };
 
-const Message = ({ price }: {price:number|null}) => (
-    <div className={styles.message}>
+const Message = ({ price }: {price:number|null}) => {
+    if (price > 200) return;
+    return (
+        <div className={styles.message}>
         <IoCubeSharp size={22} color="rgba(244, 63, 94, 1)" />
         <h5>
             Shipping & taxes <span>${200 - Number(price)}</span> calculated at checkout
@@ -44,8 +46,8 @@ const Message = ({ price }: {price:number|null}) => (
         <div className={styles.bar}>
             <div className="fill" style={{ width: "70%", height: 3 }}></div>
         </div>
-    </div>
-);
+    </div>)
+};
 
 
 const Form = ({ price, userData, product_id } : {price:number | null ,userData:any, product_id:number | null | string }) => {

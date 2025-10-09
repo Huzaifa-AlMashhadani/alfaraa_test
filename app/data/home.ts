@@ -66,11 +66,11 @@ navbar: {
    ]
   },
 brands:[
-      {id:1, title: "nameOFsections", logo: "/hyundai-automobiles-1 1.png"},
+      {id:1, title: "hyundai", logo: "/hyundai-automobiles-1 1.png"},
     {id:2, title: "Vector", logo: "/Vector.png"},
     {id:3, title: "mercedes-benz", logo: "/mercedes-benz-9 1.png"},
-    {id:4, title: "nameOFsections", logo: "/Group.png"},
-    {id:5, title: "nameOFsections", logo: "/02.png"},
+    {id:4, title: "Group", logo: "/Group.png"},
+    {id:5, title: "Toyota", logo: "/02.png"},
 ],
 
 slider : {

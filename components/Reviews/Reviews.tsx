@@ -26,7 +26,7 @@ function Reviews({ reviews }: {reviews: reviews[]}) {
 
                     {/* النجوم */}
                     <div className={styles.stars}>
-                        <div>
+                        <div className={styles.Stars}>
                             {Array.from({ length: 5 }, (_, i) =>
                                 i < review.stars ? (
                                     <FaStar key={i} className={`${styles.star} ${styles.filled}`} size={22}/>

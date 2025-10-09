@@ -7,7 +7,6 @@ import styles from "./slider.module.css";
 import Card from "../Card/Card";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import {addFavorite, getFavorites} from "@/app/utils/favorites";
 import {useEffect, useState} from "react";
 
 interface Review {
@@ -41,22 +40,7 @@ type LocalData = {
 
 const Slider = ({data} : {data: LocalData}) => {
 
-    const [isFav, setIsFav] = useState(false);
-    const [favoriteData, setFavoriteData] = useState<any[]>([]);
-    // جلب المفضلات من API
-    useEffect(() => {
-        const fetchFavorites = async () => {
-            try {
-                const favs = await getFavorites();
-                if(favs !==null) {const ids = favs.map((item) => item.id);
-                setFavoriteData(ids);} // قائمة IDs فقط
-            } catch (err) {
-                console.error(err);
-                setFavoriteData([]);
-            }
-        };
-        fetchFavorites();
-    }, []);
+
 
     return (
     <div className={styles.silder}>

@@ -30,7 +30,7 @@ const Middle = ()=>{
     return(
         <div className={styles.middle}>
             <div className="contactUS">
-                <h1>Contact us</h1>
+                <h1>تواصل معنا </h1>
                 <div className="section">
                     <h3>Lorem, ipsum.</h3>
                     <span>Lorem ipsum dolor sit.</span>
@@ -116,8 +116,7 @@ const Bottom = ()=>{
         </div>
         <div className={styles.app}>
             <h5>Lorem ipsum dolor</h5>
-            <a href=""><img src="/logo.png" alt="" /></a>
-            <a href=""><img src="/logo.png" alt="" /></a>
+
         </div>
     </div>
     )

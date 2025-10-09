@@ -121,6 +121,10 @@ display: inline-block;
 }
 .stars{
     color: orange;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
     direction: ltr;
 }
 @media (max-width: 776px) {

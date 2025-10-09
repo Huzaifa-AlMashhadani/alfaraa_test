@@ -8,6 +8,7 @@
 }
 .textContent{
     text-align: end;
+
 }
 .textContent h1.title{
     font-size: 28px;
@@ -23,7 +24,15 @@
 }
 .textContent .stars{
     color: orange;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     direction: ltr;
+}
+.imagesSLider{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
 }
 
 .textContent .productdescription{
@@ -37,6 +46,7 @@
     margin-top: 20px;
     direction: rtl;
     flex-direction: row-reverse;
+    flex-wrap: wrap;
 }
 .textContent input, .textContent button, .textContent select{
     width: 130px;
@@ -215,12 +225,31 @@
     padding: 10px;
     text-align: center;
 }
+
 @media (max-width: 997px) {
     .product{
         flex-direction: column-reverse;
         justify-content: center;
         align-items: center;
     }
+}
+@media (max-width: 700px) {
+    .imagesSLider img{
+        width: 70px;
+        height: 70px;
+        object-fit: contain;
+    }
+    .textContent{
+        max-width: 100%;
+    }
+    .textContent p{
+        max-width: 100%;
+        padding: 10px;
+    }
+    .nav span{
+        font-size: 13px;
+    }
+
 }
 .productDescription{
     display: flex;

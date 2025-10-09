@@ -1,16 +1,13 @@
 .sections{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 30px;
 }
 .sections .card{
     text-align: center;
     background: #f5f5f5;
     padding:10px 25px;
-    width: 210px;
-    height: 200px;
+
 }
 .sections .card img{
     width: 100%;

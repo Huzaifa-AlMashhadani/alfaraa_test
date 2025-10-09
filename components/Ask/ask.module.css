@@ -35,6 +35,7 @@ flex-wrap: wrap;
   background: var(--main-color);
   margin: 10px;
   font-weight: 700;
+    color: #FFFFFF;
 }
 
 .ask .askes .answer{

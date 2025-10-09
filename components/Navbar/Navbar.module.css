@@ -21,7 +21,7 @@ z-index: 10;
 .currencyLanguage select{
     background: none;
     border: none;
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 500;
     color: #515D64;
 }
@@ -251,7 +251,9 @@ top: -7px;
     text-align: center;
 }
 .allsectionsWindow .cardsSections .card img{
-width: 70px;
+width: 200px;
+    height: 200px;
+    object-fit: cover;
 padding: 15px;
 border-radius: 6px;
 background-color: var(--border-color);

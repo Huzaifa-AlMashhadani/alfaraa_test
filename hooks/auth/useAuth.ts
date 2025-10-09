@@ -6,6 +6,7 @@ export type UserData = {
     avatar_url: string;
     country: string;
     name: string;
+    role: string;
     phone: string;
 }
 

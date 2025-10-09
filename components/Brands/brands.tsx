@@ -1,4 +1,5 @@
 import styles from "./brands.module.css"
+import Link from "next/link";
 
 type LocalData = {
     id: number
@@ -11,12 +12,12 @@ const BrandCard = ({data}: {data : LocalData[]})=>{
     return (
         <>
         {data.map((item)=>(
-        <a href={`SearchResult?company=${item.id}`} key={item.id} className={styles.card}>
+        <Link href={`SearchResult?company=${item.title}`} key={item.id} className={styles.card}>
             <div className={styles.card} >
                 <img src={item.logo} alt="" />
                 <h4>{item.title} </h4>
             </div>
-        </a>
+        </Link>
         ))}
         </>
         

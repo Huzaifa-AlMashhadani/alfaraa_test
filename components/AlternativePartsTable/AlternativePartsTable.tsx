@@ -1,7 +1,7 @@
 import React from "react";
 
 const AlternativePartsTable = ({ alternativeParts }: {alternativeParts:any[]}) => {
-    if (!alternativeParts || alternativeParts.length === 0) {
+    if (!alternativeParts || alternativeParts.length < 1) {
         return <p>لا توجد أرقام بديلة متاحة للمنتج.</p>;
     }
 
@@ -15,6 +15,8 @@ const AlternativePartsTable = ({ alternativeParts }: {alternativeParts:any[]}) =
     const trHoverStyle = {
         backgroundColor: "#f9f9f9",
     };
+
+    console.log(alternativeParts);
 
     return (
         <table >

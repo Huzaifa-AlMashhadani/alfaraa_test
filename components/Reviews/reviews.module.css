@@ -37,6 +37,11 @@
     align-items: start;
     gap: 10px;
 }
+.Stars {
+    display: flex;
+   justify-content: center;
+    align-items: center;
+}
 
 
 .star.filled {

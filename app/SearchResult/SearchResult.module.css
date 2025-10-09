@@ -12,6 +12,10 @@
     font-size: 20px;
     margin-top: 50px;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 .nores h1{
     font-size: 25px;
