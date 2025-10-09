@@ -81,7 +81,7 @@ const Profile = () => {
                     {/* بطاقة المستخدم */}
                     <div className="bg-white shadow-md rounded-xl p-6 mb-8 flex flex-col md:flex-row items-center md:items-start gap-6">
                         <img
-                            src={profileData.avatar_url ? `http://127.0.0.1:8000${profileData.avatar_url}` : "/user.jpeg"}
+                            src={profileData.avatar_url ? `${process.env.NEXT_PUBLIC_SERVER_APP_BASE_URL}${profileData.avatar_url}` : "/user.jpeg"}
                             alt="User Avatar"
                             className="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover border-2 border-blue-500"
                         />

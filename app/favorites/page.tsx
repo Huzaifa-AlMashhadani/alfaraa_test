@@ -27,7 +27,7 @@ export default function FavoritesPage() {
         try {
             const token = localStorage.getItem("token");
             const res = await fetch(
-                `http://127.0.0.1:8000/api/favorites/${product_id}`,
+                `${process.env.NEXT_PUBLIC_SERVER_APP_BASE_URL}/favorites/${product_id}`,
                 {
                     method: "DELETE",
                     headers: {

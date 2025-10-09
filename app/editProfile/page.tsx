@@ -34,7 +34,7 @@ const EditProfile = () => {
             const token = localStorage.getItem("token");
 
             try {
-                const res = await fetch("http://127.0.0.1:8000/api/profile", {
+                const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_APP_BASE_URL}/profile`, {
                     method: "GET",
                     headers: {
                         Accept: "application/json",
@@ -84,7 +84,7 @@ const EditProfile = () => {
         
 
         try {
-            const res = await fetch("http://127.0.0.1:8000/api/edit-account", {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_APP_BASE_URL}/edit-account`, {
                 method: "POST",
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -112,7 +112,7 @@ const EditProfile = () => {
                     <label>
                         <span>edit</span>
                         <img
-                            src={selectedImage ? URL.createObjectURL(selectedImage) : `http://127.0.0.1:8000${profileData.avatar_url}`|| "/user.jpeg"}
+                            src={selectedImage ? URL.createObjectURL(selectedImage) : `${process.env.NEXT_PUBLIC_SERVER_APP_BASE_URL}${profileData.avatar_url}`|| "/user.jpeg"}
                             alt="Profile"
                         />
 

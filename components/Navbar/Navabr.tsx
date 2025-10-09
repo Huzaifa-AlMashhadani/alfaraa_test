@@ -123,7 +123,7 @@ const Middle = ({ data }: { data: NavbarData }) => {
 
     // البحث
     const { results, loading } = useLiveSearch(
-        "http://127.0.0.1:8000/api/products/search",
+        `${process.env.NEXT_PUBLIC_SERVER_APP_BASE_URL}/products/search`,
         query
     );
 
@@ -177,9 +177,9 @@ const Middle = ({ data }: { data: NavbarData }) => {
 
             <a href="/profile">
                 <div className={styles.acount}>
-                    {profileData.avatar_url ? (
+                    {profileData.avatar_url !==null && profileData.avatar_url !== "/no-image.jpeg" ? (
                         <img
-                            src={`http://127.0.0.1:8000${profileData.avatar_url}`}
+                            src={`${process.env.NEXT_PUBLIC_SERVER_APP_BASE_URL}${profileData.avatar_url}`}
                             alt=""
                             className={styles.profileImage}
                         />

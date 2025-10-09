@@ -37,7 +37,7 @@ const CarSaveCard = ({ car, onDelete }: CarSaveCardProps) =>{
                 return;
             }
 
-            const res = await fetch(`http://127.0.0.1:8000/api/garage/${carId}`, {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_APP_BASE_URL}/garage/${carId}`, {
                 method: "delete",
                 headers: {
                     "Accept": "application/json",
@@ -86,7 +86,7 @@ const Garage = () => {
     useEffect(() => {
         const getData = async () => {
             try {
-                const searchRes = await fetch("http://127.0.0.1:8000/api/searchData")
+                const searchRes = await fetch(`${process.env.NEXT_PUBLIC_SERVER_APP_BASE_URL}/searchData`)
                 const searchData = await searchRes.json()
                 setSearchData(searchData)
             } catch (err) {
