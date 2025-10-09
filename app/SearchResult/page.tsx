@@ -1,6 +1,6 @@
-"use client"
+"use client";
 export const dynamic = "force-dynamic";
-
+export const revalidate = 0; // optional, للتأكد من عدم ISR
 import styles from "./SearchResult.module.css";
 import Navbar from "../../components/Navbar/Navabr";
 import Footer from "../../components/Footer/footer";
@@ -130,7 +130,6 @@ const searchParams = useSearchParams();
         });
     }
 
-    console.log(brand && model && year)
 
     return (
         <div className={styles.SearchResult}>

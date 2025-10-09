@@ -1,3 +1,4 @@
+"use client"
 import styles from "./ProductCatregories.module.css";
 import {useState} from "react";
 

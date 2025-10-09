@@ -1,3 +1,4 @@
+"use client"
 import { AiOutlineProduct } from 'react-icons/ai';
 import styles from './ProductFilters.module.css';
 
