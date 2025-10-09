@@ -3,6 +3,7 @@ import { useSupport } from "@/hooks/Support/useSupport";
 import { useUser } from "@/hooks/auth/useAuth";
 
 export default function FloatingSupportChat({
+
                                                 lang = "ar",
                                                 storageKey = "floating_support_chat_messages",
                                             }) {
