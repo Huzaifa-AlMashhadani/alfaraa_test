@@ -20,7 +20,7 @@ const Form = () => {
                 setError("كل الحقول مطلوبه ");
                 return;
             }
-            const res = await fetch("http://127.0.0.1:8000/api/register", {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_APP_BASE_URL}/api/register`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({  name, phone, email, password , password_confirmation}),

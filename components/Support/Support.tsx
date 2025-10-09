@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useSupport } from "@/hooks/Support/useSupport";
-import Loading from "@/app/ui/loaders/Loading";
 import { useUser } from "@/hooks/auth/useAuth";
 
 export default function FloatingSupportChat({

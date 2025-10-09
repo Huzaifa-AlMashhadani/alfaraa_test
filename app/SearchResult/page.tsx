@@ -1,6 +1,4 @@
 "use client";
-export const dynamic = "force-dynamic";
-
 import styles from "./SearchResult.module.css";
 import Navbar from "../../components/Navbar/Navabr";
 import Footer from "../../components/Footer/footer";
