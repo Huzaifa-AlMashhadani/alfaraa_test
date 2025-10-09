@@ -1,3 +1,4 @@
+"use client"
 import { IoStar } from "react-icons/io5"
 import styles from "./CustomerReviews.module.css"
 import {useInView} from "react-intersection-observer";

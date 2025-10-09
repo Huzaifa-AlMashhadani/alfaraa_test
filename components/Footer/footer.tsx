@@ -1,3 +1,4 @@
+"use client"
 import { FaFacebook, FaLinkedinIn } from "react-icons/fa"
 import styles from "./footer.module.css"
 import { TbBrandLinkedinFilled } from "react-icons/tb"

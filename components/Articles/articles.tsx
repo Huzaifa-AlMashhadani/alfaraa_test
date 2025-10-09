@@ -1,3 +1,4 @@
+"use client"
 import styles from "./Articles.module.css"
 import {articlesData, usegetThereArticles} from "@/hooks/articles/useArticles";
 import {useInView} from "react-intersection-observer";

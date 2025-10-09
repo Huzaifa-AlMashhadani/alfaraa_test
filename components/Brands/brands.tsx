@@ -1,3 +1,4 @@
+"use client"
 import styles from "./brands.module.css"
 import Link from "next/link";
 import { useInView } from "react-intersection-observer";

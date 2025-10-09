@@ -1,3 +1,4 @@
+"use client"
 import styles from "./howto.module.css"
 import {useInView} from "react-intersection-observer";
 import ElmentLoadin from "@/components/elemetLoadin/elmentLoadin";
