@@ -177,7 +177,7 @@ const Middle = ({ data }: { data: NavbarData }) => {
 
             <a href="/profile">
                 <div className={styles.acount}>
-                    {profileData.avatar_url !==null && profileData.avatar_url !== "/no-image.jpeg" ? (
+                    {profileData.avatar_url !==null && profileData.avatar_url !== "/no-image.jpeg" && profileData.avatar_url ? (
                         <img
                             src={`${process.env.NEXT_PUBLIC_SERVER_APP_BASE_URL}${profileData.avatar_url}`}
                             alt=""

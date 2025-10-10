@@ -23,14 +23,13 @@ export default function FloatingSupportChat({
     // نوع ref صحيح لـ textarea
     const inputRef = useRef<HTMLTextAreaElement>(null);
 
-    useEffect(() => {
-        localStorage.setItem(storageKey, JSON.stringify(messages));
-    }, [messages, storageKey]);
+
 
     useEffect(() => {
-        setMessages(Messages);
+        setMessages(Array.isArray(Messages) ? Messages : []);
+        localStorage.setItem(storageKey, JSON.stringify(Messages));
         if (open) setTimeout(() => inputRef.current?.focus(), 120);
-    }, [open, JSON.stringify(Messages)]);
+    }, [open, JSON.stringify(Messages), storageKey]);
 
     const t = {
         en: {

@@ -117,17 +117,17 @@ const TextContent = ({ProdutData, ProductCombilitiy}: {ProdutData: ProductData, 
 
         // النجوم الكاملة
         for (let i = 0; i < fullStars; i++) {
-            stars.push(<FaStar key={`full-${i}`} size={23} />);
+            stars.push(<FaStar key={`full-${i}`} className={styles.star} />);
         }
 
         // النصف نجمة
         if (hasHalfStar) {
-            stars.push(<FaStarHalfAlt key="half" size={23} />);
+            stars.push(<FaStarHalfAlt key="half" className={styles.star} />);
         }
 
         // النجوم الفارغة
         for (let i = 0; i < emptyStars; i++) {
-            stars.push(<FaRegStar key={`empty-${i}`} size={23} style={{ opacity: 0.4 }} />);
+            stars.push(<FaRegStar key={`empty-${i}`} className={styles.star} style={{ opacity: 0.4 }} />);
         }
 
         return stars;
@@ -147,9 +147,9 @@ const TextContent = ({ProdutData, ProductCombilitiy}: {ProdutData: ProductData, 
     return (
         <div className={styles.textContent}>
             <h1 className={styles.title}>{ProdutData.ar_name} </h1>
-            <span ><Link href={`/store/${Store.id}`} className={styles.storeName}>{Store.name}   </Link> : المتجر</span>
+            <span><Link href={`/store/${Store.id}`} className={styles.storeName}>{Store.name}   </Link> : المتجر</span>
             <div className={styles.detiles}>
-                <span className={styles.Measurement}>100ml</span>
+                <span className={styles.Measurement}>قطعه</span>
                 <div className={styles.reviews}>
                     <span className={styles.reviewCount}>({ProdutData.reviews_count || 0} reviews)</span>
                     <span className={styles.stars}>
@@ -167,28 +167,52 @@ const TextContent = ({ProdutData, ProductCombilitiy}: {ProdutData: ProductData, 
             </div>
 
             {/* عرض التوافق مع السيارات */}
-            {ProductCombilitiy.cars && ProductCombilitiy.cars.length > 0 ?(
-            <div className={styles.compatibility}>
-                <IoIosCheckmarkCircleOutline size={40}/>
-                <p>{ProductCombilitiy.message}</p>
+            {ProductCombilitiy.cars && ProductCombilitiy.cars.length > 0 ? (
+                <div className={styles.compatibility}>
+                    <IoIosCheckmarkCircleOutline size={40}/>
+                    <p>{ProductCombilitiy.message}</p>
 
                     <div className={styles.carsCombilitiy}>
                         {ProductCombilitiy.cars.map((car, idx) => (
-                                <a href="/garage" key={idx} >
-                                    <span >{car}</span>
+                            <a href="/garage" key={idx}>
+                                <span>{car}</span>
 
-                                </a>
+                            </a>
 
                         ))}
                     </div>
 
-            </div>
-            ):(
+                </div>
+            ) : (
                 <div className={styles.emtyCombitlity}>
-                <IoWarningOutline size={30}/>
+                    <IoWarningOutline size={30}/>
                     <p>{ProductCombilitiy.message}</p>
                 </div>
             )}
+
+
+            <a
+                href="https://iwtsp.com/966555392582"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-4 px-6 py-3 rounded-full shadow-lg ring-1 ring-black/10 bg-white hover:scale-105 transform transition-all duration-150 m-5"
+                aria-label="تواصل عبر واتساب"
+            >
+
+                <span className="flex items-center justify-center w-12 h-12 rounded-full bg-green-600">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-7 h-7 text-white">
+      <path
+          d="M20.52 3.48A11.88 11.88 0 0 0 12.01.02C6.07.02 1.21 4.88 1.21 10.82c0 1.9.5 3.76 1.45 5.39L.1 22l5.03-2.03c1.46.8 3.11 1.23 4.88 1.23h.01c5.94 0 10.8-4.86 10.8-10.8 0-2.88-1.12-5.55-3.31-7.89zM12.01 20.3c-1.46 0-2.89-.39-4.12-1.13l-.29-.17-3.36 1.36 1.36-3.28-.19-.33A8.98 8.98 0 0 1 3 10.82c0-5 4.08-9.08 9.08-9.08 2.43 0 4.71.95 6.43 2.67a8.99 8.99 0 0 1-6.5 15.87z"/>
+      <path
+          d="M17.5 14.3c-.3-.16-1.78-.88-2.06-.98-.28-.1-.48-.16-.69.16-.2.33-.78.98-.95 1.18-.17.2-.35.22-.65.07-.3-.16-1.27-.47-2.41-1.49-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.62.13-.12.3-.31.45-.46.15-.15.2-.26.3-.43.1-.16.05-.31-.02-.46-.07-.15-.69-1.68-.95-2.3-.25-.6-.5-.52-.69-.53-.18-.01-.39-.01-.6-.01-.2 0-.52.07-.8.32-.28.25-1.06 1.03-1.06 2.5 0 1.47 1.09 2.9 1.24 3.1.15.2 2.15 3.45 5.21 4.83 3.06 1.38 3.06.92 3.61.86.55-.06 1.78-.72 2.03-1.42.25-.7.25-1.3.18-1.42-.07-.12-.28-.19-.58-.35z"/>
+    </svg>
+  </span>
+
+
+                <span className="text-lg font-semibold text-gray-800">تواصل عبر واتساب</span>
+            </a>
+
+
             {added && (
                 <div style={{
                     position: "absolute",
@@ -218,14 +242,16 @@ const TextContent = ({ProdutData, ProductCombilitiy}: {ProdutData: ProductData, 
                 <div className={styles.atom}>
                     <span onClick={() => setAtom(atom + 1)}><GoPlus size={28}/></span>
                     <input type="number" min={1} value={atom} onChange={handleChange} className={styles.quantityInput}/>
-                    <span onClick={()=> setAtom(Math.max(1, atom - 1))}><LuMinus size={28}/></span>
+                    <span onClick={() => setAtom(Math.max(1, atom - 1))}><LuMinus size={28}/></span>
                 </div>
                 {ProdutData.product_units.length > 0 ? (
-                        <>
-                            <button className={styles.addToCartButton}  onClick={handleAddToCart}>Add to Cart</button>
-                            <Link href={`/Checkout?product_id=${ProdutData.id}&price=${ProdutData.price}`}><button className={styles.BuyNowBtn}>Buy Now</button></Link>
-                        </>
-                ):(
+                    <>
+                        <button className={styles.addToCartButton} onClick={handleAddToCart}>Add to Cart</button>
+                        <Link href={`/Checkout?product_id=${ProdutData.id}&price=${ProdutData.price}`}>
+                            <button className={styles.BuyNowBtn}>Buy Now</button>
+                        </Link>
+                    </>
+                ) : (
                     <p className={styles.No_stok}>غير متوفر حاليا </p>
                 )}
 
@@ -241,7 +267,7 @@ const TextContent = ({ProdutData, ProductCombilitiy}: {ProdutData: ProductData, 
             className={activeTab === "description" ? styles.active : styles.navItem}
             onClick={() => setActiveTab("description")}
         >
-          Description
+          الوصف
         </span>
                     <span
                         className={activeTab === "additional" ? styles.active : styles.navItem}
@@ -253,34 +279,36 @@ const TextContent = ({ProdutData, ProductCombilitiy}: {ProdutData: ProductData, 
                         className={activeTab === "reviews" ? styles.active : styles.navItem}
                         onClick={() => setActiveTab("reviews")}
                     >
-          المراجعات  {ProdutData.reviews?.length}
+          المراجعات {ProdutData.reviews?.length}
         </span>
                 </div>
 
                 {/* المحتوى */}
                 <div className={styles.tabContent}>
                     {activeTab === "description" && <div className={styles.productDescription}>{
-                        ProdutData.part_number.map((part:any, index) => (
-                            <div key={index} >
+                        ProdutData.part_number.map((part: any, index) => (
+                            <div key={index}>
                                 <p>{`${part.company} | ${part.part_number}`}</p>
                             </div>
                         ))
                     } </div>}
-                    {activeTab === "additional" && <div className={styles.alternativeParts}><AlternativePartsTable alternativeParts={ProdutData.part_number}/> </div>}
-                    {activeTab === "reviews" &&  <div className={styles.reviews}><Reviews reviews={ProdutData.reviews ?? []} /></div> }
+                    {activeTab === "additional" && <div className={styles.alternativeParts}><AlternativePartsTable
+                        alternativeParts={ProdutData.part_number}/></div>}
+                    {activeTab === "reviews" &&
+                        <div className={styles.reviews}><Reviews reviews={ProdutData.reviews ?? []}/></div>}
                 </div>
             </div>
         </div>
     );
 }
 
-const SliderShow = ({ProdutData} : {ProdutData: ProductData}) =>{
+const SliderShow = ({ProdutData}: { ProdutData: ProductData }) => {
     const [activeImage, setActiveImage] = useState(ProdutData.thumbnail);
 
     return (
         <div className={styles.SliderShow}>
             <div className={styles.activeImage}>
-                <img src={activeImage ||ProdutData.thumbnail || ProdutData.image || "/no-image.jpeg"} alt=""
+                <img src={activeImage || ProdutData.thumbnail || ProdutData.image || "/no-image.jpeg"} alt=""
 
                 />
             </div>
@@ -288,9 +316,11 @@ const SliderShow = ({ProdutData} : {ProdutData: ProductData}) =>{
                 {ProdutData.images?.length > 0 && (
                     <div className={styles.imagesSLider}>
                         {ProdutData.images.map((item, index) => (
-                            <img key={index} src={item.image_url} alt={`image-${index}`} className={styles.SlideImages} onClick={()=>setActiveImage(item.image_url)}/>
+                            <img key={index} src={item.image_url} alt={`image-${index}`} className={styles.SlideImages}
+                                 onClick={() => setActiveImage(item.image_url)}/>
                         ))}
-                        <img  src={ProdutData.thumbnail} alt={`image-${ProdutData.en_name}`} className={styles.SlideImages} onClick={()=>setActiveImage(ProdutData.thumbnail)}/>
+                        <img src={ProdutData.thumbnail} alt={`image-${ProdutData.en_name}`}
+                             className={styles.SlideImages} onClick={() => setActiveImage(ProdutData.thumbnail)}/>
                     </div>
                 )}
             </div>

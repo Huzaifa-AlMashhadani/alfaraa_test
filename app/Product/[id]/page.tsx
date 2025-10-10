@@ -6,6 +6,7 @@ import React, { useEffect, useState } from "react";
 import data from "@/app/data/home";
 import Loading from "@/app/ui/loaders/Loading";
 import {useCart} from "@/hooks/cart/useCart";
+import FloatingSupportChat from "@/components/Support/Support";
 
 interface ProductCombilitiy {
     message: string;
@@ -116,6 +117,7 @@ const ProductPage = ({ params }: Props) => {
         <div className="Product">
             <Navbar  />
 
+            <FloatingSupportChat/>
                 <Product ProdutData={product} ProductCombilitiy={compatibility} />
 
             <Footer />

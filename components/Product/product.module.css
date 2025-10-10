@@ -225,6 +225,9 @@
     padding: 10px;
     text-align: center;
 }
+.star{
+    font-size: 23px;
+}
 
 @media (max-width: 997px) {
     .product{
@@ -277,4 +280,27 @@ p.No_stok{
 }
 .carsCombilitiy{
     display: flex;
+}
+@media (max-width: 700px) {
+    .price .productPrice{
+        font-size: 2rem;
+    }
+    .price  span{
+        font-size: 1.5rem;
+    }
+    .textContent h1.title{
+        font-size: 2rem;
+    }
+    .textContent .storeName{
+        font-size: 1.5rem;
+    }
+    .textContent .detiles span.Measurement{
+        font-size: 1.5rem;
+    }
+    .reviewCount{
+        font-size: 1.5rem;
+    }
+    .star{
+        font-size: 2rem;
+    }
 }

@@ -34,7 +34,7 @@ const Form = () => {
                 setError(data.message);
                 return;
             }
-            localStorage.setItem("token", data.token);
+            localStorage.setItem("token", data.data.token);
             location.href="/";
         } catch (err) {
             setError("حدث خطا غيرمتوقع ")
